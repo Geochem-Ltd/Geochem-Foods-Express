@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 // 3D Tilt effect for cards
+// Tilt effect inline implementation
 function attachTilt(selector = ".tilt", maxTilt = 8) {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
   if (prefersReducedMotion) return

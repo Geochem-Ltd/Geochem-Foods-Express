@@ -77,6 +77,47 @@
       background: rgba(250, 249, 246, 0.8);
     }
 
+
+  <!-- Mobile Sidebar Menu -->
+  <div id="mobileMenu" class="hidden fixed inset-0 bg-black/50 z-50 md:hidden">
+    <div class="bg-white w-4/5 max-w-sm h-full ml-auto p-6 shadow-2xl overflow-y-auto">
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-2">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" alt="GFE Logo" class="w-10 h-10 object-contain" width="40" height="40" />
+          <div>
+            <div class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</div>
+            <div class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</div>
+          </div>
+        </div>
+        <button id="closeMenu" aria-label="Close menu" class="p-2 hover:bg-gray-100 rounded-lg transition">
+          <i class="fas fa-times text-[var(--gfe-text)] text-xl"></i>
+        </button>
+      </div>
+      
+      <nav class="flex flex-col gap-4">
+        <a href="index.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-home mr-2"></i>Home
+        </a>
+        <a href="shop.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-shopping-bag mr-2"></i>Shop
+        </a>
+        <a href="about.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-info-circle mr-2"></i>About
+        </a>
+        <a href="why-us.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-star mr-2"></i>Why Us
+        </a>
+        <a href="blog.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-blog mr-2"></i>Blog
+        </a>
+        <a href="contact.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-envelope mr-2"></i>Contact
+        </a>
+      </nav>
+    </div>
+  </div>
+
+
     .skip-link {
       position: absolute;
       top: -40px;
@@ -258,11 +299,11 @@
           <h4 class="font-bold text-[var(--gfe-green)] mb-4">Contact Us</h4>
           <div class="space-y-3 text-sm">
             <div class="flex items-center gap-2">
-              <i class="fa fa-phone text-[var(--gfe-red)]"></i>
+              <i class="fas fa-phone text-[var(--gfe-red)]"></i>
               <a href="tel:+2348033153947" class="hover:text-[var(--gfe-green)] transition">+234 803 315 3947</a>
             </div>
             <div class="flex items-center gap-2">
-              <i class="fa fa-envelope text-[var(--gfe-red)]"></i>
+              <i class="fas fa-envelope text-[var(--gfe-red)]"></i>
               <a href="mailto:info.geochemltd@gmail.com" class="hover:text-[var(--gfe-green)] transition">info.geochemltd@gmail.com</a>
             </div>
             <div class="flex items-center gap-2">
@@ -281,6 +322,32 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="assets/js/auth.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <!-- Mobile Menu Handler -->
+  <script>
+    const openMenuBtn = document.getElementById('openMenu');
+    const closeMenuBtn = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    if (openMenuBtn && mobileMenu) {
+      openMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('hidden');
+      });
+    }
+    
+    if (closeMenuBtn && mobileMenu) {
+      closeMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+      
+      // Close menu when clicking outside
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
