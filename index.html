@@ -24,9 +24,18 @@
   
   <meta name="theme-color" content="#1B5E20" />
   
+  <!-- Performance: Preconnect to external resources -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" crossorigin />
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+  <link rel="dns-prefetch" href="https://wa.me" />
+  
+  <!-- Critical CSS and Scripts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="preload" as="image" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" />
+  <link rel="preload" as="image" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" fetchpriority="high" />
   
   <style>
     :root {
@@ -37,7 +46,15 @@
       --gfe-text: #222222;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { 
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px; /* Account for sticky header */
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      html {
+        scroll-behavior: smooth;
+      }
+    }
     body {
       background: var(--gfe-bg);
       color: var(--gfe-text);
@@ -542,7 +559,7 @@
   </footer>
 
   <script src="assets/js/auth.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script type="module" src="assets/js/main.js"></script>
   <script>
     const categories = [
       { title: 'Rice & Grains', icon: 'fa-wheat', desc: 'Premium rice, maize, millet' },
