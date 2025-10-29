@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Settings — Geochem Foods Express</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    :root {
+      --gfe-green: #1B5E20;
+      --gfe-red: #D32F2F;
+      --gfe-gold: #D4AF37;
+      --gfe-bg: #FAF9F6;
+      --gfe-text: #222222;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--gfe-bg);
+      color: var(--gfe-text);
+      font-family: 'Inter', 'Poppins', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    }
+    .sidebar-link {
+      transition: all 0.3s ease;
+    }
+    .sidebar-link:hover {
+      background-color: rgba(27, 94, 32, 0.1);
+      transform: translateX(4px);
+    }
+    .sidebar-link.active {
+      background-color: var(--gfe-green);
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.active { transform: translateX(0); }
+      .main-content { margin-left: 0; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-white border-r border-gray-200 fixed h-full overflow-y-auto z-40 transition-transform duration-300 md:translate-x-0">
+      <div class="p-6">
+        <a href="index.html" class="flex items-center gap-2 mb-8">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" alt="GFE Logo" class="w-10 h-10 object-contain" />
+          <div>
+            <div class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</div>
+            <div class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</div>
+          </div>
+        </a>
+
+        <div class="mb-6 p-4 bg-gradient-to-r from-[var(--gfe-green)]/10 to-[var(--gfe-gold)]/10 rounded-lg">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-[var(--gfe-green)] text-white rounded-full flex items-center justify-center">
+              <i class="fas fa-user text-xl"></i>
+            </div>
+            <div>
+              <div id="user-display-name" class="font-semibold text-sm text-[var(--gfe-text)]">Loading...</div>
+              <div class="text-xs text-gray-600">Customer</div>
+            </div>
+          </div>
+        </div>
+
+        <nav class="space-y-2">
+          <a href="marketplace.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-store w-5"></i>
+            <span>Marketplace</span>
+          </a>
+          <a href="profile.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-user w-5"></i>
+            <span>Profile</span>
+          </a>
+          <a href="analytics.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-chart-line w-5"></i>
+            <span>Analytics</span>
+          </a>
+          <a href="cart.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-shopping-cart w-5"></i>
+            <span>Cart</span>
+          </a>
+          <a href="settings.html" class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium">
+            <i class="fas fa-cog w-5"></i>
+            <span>Settings</span>
+          </a>
+          <button id="logout-btn" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-red)] hover:bg-red-50">
+            <i class="fas fa-sign-out-alt w-5"></i>
+            <span>Logout</span>
+          </button>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 md:ml-64 p-4 md:p-8 transition-all duration-300">
+      <!-- Mobile Menu Toggle -->
+      <button id="menu-toggle" class="md:hidden mb-4 p-2 bg-white rounded-lg border border-gray-300">
+        <i class="fas fa-bars text-[var(--gfe-green)]"></i>
+      </button>
+
+      <h1 class="text-2xl md:text-3xl font-bold text-[var(--gfe-text)] mb-6">Settings</h1>
+
+      <!-- Account Settings -->
+      <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+        <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-4">Account Settings</h3>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-[var(--gfe-text)] mb-2">Email Address</label>
+            <input type="email" id="settings-email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gfe-green)]" disabled />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-[var(--gfe-text)] mb-2">Phone Number</label>
+            <input type="tel" id="settings-phone" placeholder="+234 XXX XXX XXXX" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gfe-green)]" />
+          </div>
+          <button id="save-account-btn" class="px-6 py-3 bg-[var(--gfe-green)] text-white rounded-lg font-semibold hover:bg-[#0d3a1a] transition">
+            <i class="fas fa-save mr-2"></i>Save Changes
+          </button>
+        </div>
+      </div>
+
+      <!-- Password Settings -->
+      <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+        <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-4">Change Password</h3>
+        <form id="password-form" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-[var(--gfe-text)] mb-2">New Password</label>
+            <input type="password" id="new-password" placeholder="••••••••" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gfe-green)]" />
+            <p class="text-xs text-gray-600 mt-1">Minimum 6 characters</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-[var(--gfe-text)] mb-2">Confirm New Password</label>
+            <input type="password" id="confirm-password" placeholder="••••••••" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gfe-green)]" />
+          </div>
+          <button type="submit" class="px-6 py-3 bg-[var(--gfe-green)] text-white rounded-lg font-semibold hover:bg-[#0d3a1a] transition">
+            <i class="fas fa-lock mr-2"></i>Update Password
+          </button>
+        </form>
+      </div>
+
+      <!-- Notification Settings -->
+      <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+        <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-4">Notification Preferences</h3>
+        <div class="space-y-3">
+          <label class="flex items-center gap-3">
+            <input type="checkbox" id="notify-email" checked class="w-4 h-4 rounded border-gray-300" />
+            <span class="text-gray-700">Email notifications for order updates</span>
+          </label>
+          <label class="flex items-center gap-3">
+            <input type="checkbox" id="notify-sms" checked class="w-4 h-4 rounded border-gray-300" />
+            <span class="text-gray-700">SMS notifications for deliveries</span>
+          </label>
+          <label class="flex items-center gap-3">
+            <input type="checkbox" id="notify-marketing" class="w-4 h-4 rounded border-gray-300" />
+            <span class="text-gray-700">Marketing emails and promotions</span>
+          </label>
+          <button id="save-notifications-btn" class="px-6 py-3 bg-[var(--gfe-green)] text-white rounded-lg font-semibold hover:bg-[#0d3a1a] transition mt-4">
+            <i class="fas fa-save mr-2"></i>Save Preferences
+          </button>
+        </div>
+      </div>
+
+      <!-- Danger Zone -->
+      <div class="bg-red-50 border border-red-200 rounded-xl p-6">
+        <h3 class="text-lg font-bold text-[var(--gfe-red)] mb-4">Danger Zone</h3>
+        <p class="text-gray-700 mb-4">Permanently delete your account and all associated data. This action cannot be undone.</p>
+        <button id="delete-account-btn" class="px-6 py-3 bg-[var(--gfe-red)] text-white rounded-lg font-semibold hover:brightness-90 transition">
+          <i class="fas fa-trash mr-2"></i>Delete Account
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { checkAuth, signOutUser, changePassword, updateUserProfile } from './assets/js/auth-firebase.js';
+    import { db } from './assets/js/firebase-config.js';
+    import { doc, deleteDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+    
+    const user = await checkAuth();
+    if (!user) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Authentication Required',
+        text: 'Please login to access settings',
+        confirmButtonText: 'Go to Login'
+      }).then(() => {
+        window.location.href = 'login.html';
+      });
+    } else {
+      document.getElementById('user-display-name').textContent = user.displayName || user.email;
+      document.getElementById('settings-email').value = user.email;
+    }
+    
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('active');
+    });
+    
+    document.getElementById('save-account-btn').addEventListener('click', async () => {
+      const phone = document.getElementById('settings-phone').value;
+      
+      if (!phone) {
+        Swal.fire('Error', 'Please enter a phone number', 'error');
+        return;
+      }
+      
+      const result = await updateUserProfile(user.uid, { phone });
+      if (result.success) {
+        Swal.fire('Success!', 'Account settings updated', 'success');
+      } else {
+        Swal.fire('Error!', result.error, 'error');
+      }
+    });
+    
+    document.getElementById('password-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const newPassword = document.getElementById('new-password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      
+      if (newPassword !== confirmPassword) {
+        Swal.fire('Error', 'Passwords do not match', 'error');
+        return;
+      }
+      
+      if (newPassword.length < 6) {
+        Swal.fire('Error', 'Password must be at least 6 characters', 'error');
+        return;
+      }
+      
+      Swal.fire({
+        title: 'Updating password...',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+      
+      const result = await changePassword(newPassword);
+      
+      if (result.success) {
+        Swal.fire('Success!', 'Password updated successfully', 'success');
+        document.getElementById('password-form').reset();
+      } else {
+        Swal.fire('Error!', result.error, 'error');
+      }
+    });
+    
+    document.getElementById('save-notifications-btn').addEventListener('click', async () => {
+      const preferences = {
+        notifications: {
+          email: document.getElementById('notify-email').checked,
+          sms: document.getElementById('notify-sms').checked,
+          marketing: document.getElementById('notify-marketing').checked
+        }
+      };
+      
+      const result = await updateUserProfile(user.uid, preferences);
+      if (result.success) {
+        Swal.fire('Success!', 'Notification preferences updated', 'success');
+      } else {
+        Swal.fire('Error!', result.error, 'error');
+      }
+    });
+    
+    document.getElementById('delete-account-btn').addEventListener('click', async () => {
+      const result = await Swal.fire({
+        title: 'Delete Account?',
+        text: 'This action is permanent and cannot be undone. All your data will be deleted.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete my account',
+        confirmButtonColor: '#d33',
+        cancelButtonText: 'Cancel'
+      });
+      
+      if (result.isConfirmed) {
+        try {
+          // Delete user document from Firestore
+          await deleteDoc(doc(db, 'users', user.uid));
+          
+          // Delete Firebase Auth user
+          await user.delete();
+          
+          Swal.fire({
+            icon: 'success',
+            title: 'Account Deleted',
+            text: 'Your account has been permanently deleted',
+            timer: 1500,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = 'index.html';
+          });
+        } catch (error) {
+          Swal.fire('Error!', error.message, 'error');
+        }
+      }
+    });
+    
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      const result = await Swal.fire({
+        title: 'Logout?',
+        text: 'Are you sure you want to logout?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, logout',
+        cancelButtonText: 'Cancel'
+      });
+      
+      if (result.isConfirmed) {
+        await signOutUser();
+        Swal.fire({
+          icon: 'success',
+          title: 'Logged Out',
+          timer: 1500,
+          showConfirmButton: false
+        }).then(() => {
+          window.location.href = 'index.html';
+        });
+      }
+    });
+  </script>
+</body>
+</html>

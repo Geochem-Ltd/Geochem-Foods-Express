@@ -1,0 +1,109 @@
+// Updated Firestore Security Rules with Analytics, Real-time, and Admin CRUD
+// Copy these rules to your Firebase Console > Firestore > Rules
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Users collection - Allow users to read/write their own data
+    match /users/{userId} {
+      allow read: if request.auth.uid == userId || isAdmin(request.auth.uid);
+      allow create: if request.auth.uid == userId;
+      allow update: if request.auth.uid == userId || isAdmin(request.auth.uid);
+      allow delete: if request.auth.uid == userId || isAdmin(request.auth.uid);
+    }
+    
+    // Products collection - Allow all authenticated users to read, admins to write
+    match /products/{productId} {
+      allow read: if request.auth != null;
+      allow create: if request.auth != null && isAdmin(request.auth.uid);
+      allow update: if request.auth != null && isAdmin(request.auth.uid);
+      allow delete: if request.auth != null && isAdmin(request.auth.uid);
+    }
+    
+    // Orders collection - Allow users to read/write their own orders
+    match /orders/{orderId} {
+      allow read: if request.auth.uid == resource.data.userId || isAdmin(request.auth.uid);
+      allow create: if request.auth != null;
+      allow update: if request.auth.uid == resource.data.userId || isAdmin(request.auth.uid);
+      allow delete: if isAdmin(request.auth.uid);
+    }
+    
+    // Cart collection - Allow users to manage their own cart
+    match /carts/{userId} {
+      allow read: if request.auth.uid == userId;
+      allow write: if request.auth.uid == userId;
+    }
+    
+    match /analytics/{userId} {
+      allow read: if request.auth.uid == userId || isAdmin(request.auth.uid);
+      allow create: if request.auth.uid == userId;
+      allow update: if request.auth.uid == userId || isAdmin(request.auth.uid);
+      allow delete: if isAdmin(request.auth.uid);
+      
+      // User order statistics subcollection
+      match /orderStats/{document=**} {
+        allow read: if request.auth.uid == userId || isAdmin(request.auth.uid);
+        allow write: if request.auth.uid == userId || isAdmin(request.auth.uid);
+      }
+      
+      // User purchase history subcollection
+      match /purchaseHistory/{document=**} {
+        allow read: if request.auth.uid == userId || isAdmin(request.auth.uid);
+        allow write: if request.auth.uid == userId || isAdmin(request.auth.uid);
+      }
+      
+      // User spending trends subcollection
+      match /spendingTrends/{document=**} {
+        allow read: if request.auth.uid == userId || isAdmin(request.auth.uid);
+        allow write: if request.auth.uid == userId || isAdmin(request.auth.uid);
+      }
+    }
+    
+    match /adminAnalytics/{document=**} {
+      allow read: if isAdmin(request.auth.uid);
+      allow write: if isAdmin(request.auth.uid);
+      
+      // Sales statistics subcollection
+      match /salesStats/{statId} {
+        allow read: if isAdmin(request.auth.uid);
+        allow write: if isAdmin(request.auth.uid);
+      }
+      
+      // User statistics subcollection
+      match /userStats/{statId} {
+        allow read: if isAdmin(request.auth.uid);
+        allow write: if isAdmin(request.auth.uid);
+      }
+      
+      // Product performance subcollection
+      match /productPerformance/{statId} {
+        allow read: if isAdmin(request.auth.uid);
+        allow write: if isAdmin(request.auth.uid);
+      }
+      
+      // Revenue reports subcollection
+      match /revenueReports/{reportId} {
+        allow read: if isAdmin(request.auth.uid);
+        allow write: if isAdmin(request.auth.uid);
+      }
+    }
+    
+    match /activityLogs/{logId} {
+      allow read: if request.auth.uid == resource.data.userId || isAdmin(request.auth.uid);
+      allow create: if request.auth != null;
+      allow update: if isAdmin(request.auth.uid);
+      allow delete: if isAdmin(request.auth.uid);
+    }
+    
+    match /systemMetrics/{metricId} {
+      allow read: if isAdmin(request.auth.uid);
+      allow write: if isAdmin(request.auth.uid);
+    }
+    
+    // Helper function to check if user is admin
+    function isAdmin(uid) {
+      return get(/databases/$(database)/documents/users/$(uid)).data.role == 'admin';
+    }
+  }
+}

@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Geochem Foods Express - Precision in Process. Purity in Every Pack. Hygienically processed Nigerian food from Anambra." />
+  <title>Geochem Foods Express — Home</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" />
+  <link rel="apple-touch-icon" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" />
+  
+  <!-- Meta Tags for Social Media -->
+  <meta property="og:title" content="Geochem Foods Express — Precision in Process. Purity in Every Pack." />
+  <meta property="og:description" content="Hygienically processed Nigerian food from Anambra. Lab-tested quality, locally sourced, delivered nationwide." />
+  <meta property="og:image" content="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" />
+  <meta property="og:url" content="https://geochemfoodsexpress.com" />
+  <meta property="og:type" content="website" />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Geochem Foods Express" />
+  <meta name="twitter:description" content="Precision in Process. Purity in Every Pack." />
+  <meta name="twitter:image" content="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" />
+  
+  <meta name="theme-color" content="#1B5E20" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preload" as="image" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" />
+  
+  <style>
+    :root {
+      --gfe-green: #1B5E20;
+      --gfe-red: #D32F2F;
+      --gfe-gold: #D4AF37;
+      --gfe-bg: #FAF9F6;
+      --gfe-text: #222222;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--gfe-bg);
+      color: var(--gfe-text);
+      font-family: 'Inter', 'Poppins', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    .tilt {
+      transform-style: preserve-3d;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      will-change: transform;
+      perspective: 1000px;
+    }
+    .tilt:active { transition: transform 0.05s; }
+    .tilt-inner { transform-style: preserve-3d; transition: transform 0.18s ease; }
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .floaty { animation: floaty 6s ease-in-out infinite; }
+    .animate-slide-in { animation: slideInUp 0.6s ease-out forwards; }
+    .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    .animate-scale-in { animation: scaleIn 0.5s ease-out forwards; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    :focus-visible {
+      outline: 3px solid var(--gfe-green);
+      outline-offset: 2px;
+    }
+    button:focus-visible, a:focus-visible {
+      outline: 3px solid var(--gfe-green);
+      outline-offset: 2px;
+    }
+    .btn-primary {
+      background-color: var(--gfe-green);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #0d3a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(27, 94, 32, 0.2);
+    }
+    .btn-secondary {
+      border: 2px solid var(--gfe-gold);
+      color: var(--gfe-gold);
+      transition: all 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background-color: var(--gfe-gold);
+      color: var(--gfe-green);
+      transform: translateY(-2px);
+    }
+    img { loading: lazy; }
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .card-hover:hover { transform: translateY(-4px); }
+    .header-sticky {
+      backdrop-filter: blur(10px);
+      background: rgba(250, 249, 246, 0.8);
+    }
+    .testimonial-card { border-left: 4px solid var(--gfe-gold); }
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.2);
+      transition: left 0.5s ease;
+    }
+    .btn-glow:hover::before { left: 100%; }
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--gfe-green);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }
+    .skip-link:focus { top: 0; }
+  </style>
+</head>
+<body class="antialiased">
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER / NAVBAR -->
+  <header class="sticky top-0 z-40 header-sticky border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 group" aria-label="Geochem Foods Express Home">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" alt="Geochem Foods Express Logo" class="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300" width="48" height="48" />
+        <div class="hidden sm:flex flex-col">
+          <span class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</span>
+          <span class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</span>
+        </div>
+      </a>
+
+      <!-- Navigation (Desktop - Public) -->
+      <nav id="public-nav" class="hidden lg:flex items-center gap-6">
+        <a href="index.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Home</a>
+        <a href="shop.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Shop</a>
+        <a href="about.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">About</a>
+        <a href="why-us.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Why Us</a>
+        <a href="blog.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Blog</a>
+        <a href="contact.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Contact</a>
+      </nav>
+
+      <!-- Navigation (Desktop - Authenticated) -->
+      <nav id="private-nav" class="hidden lg:flex items-center gap-6" style="display: none;">
+        <a href="marketplace.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Marketplace</a>
+        <a href="profile.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Profile</a>
+        <a href="analytics.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Analytics</a>
+        <a href="settings.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Settings</a>
+        <a href="cart.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Cart</a>
+      </nav>
+
+      <!-- CTA Buttons - only show hamburger on mobile -->
+      <div id="auth-buttons" class="flex items-center gap-2">
+        <button onclick="checkAuthAndRedirect('marketplace.html')" class="hidden md:inline-block px-4 py-2 rounded-full bg-[var(--gfe-gold)] text-[var(--gfe-green)] text-sm font-medium btn-primary shadow-md hover:bg-[var(--gfe-green)] hover:text-white">
+          <i class="fa fa-store mr-1"></i>Marketplace
+        </button>
+        <a href="login.html" class="hidden md:inline-block px-4 py-2 rounded-full bg-[var(--gfe-green)] text-white text-sm font-medium btn-primary shadow-md">
+          Sign In
+        </a>
+        <button id="openMenu" aria-label="Open navigation menu" class="p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
+          <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
+        </button>
+      </div>
+
+      <!-- User Menu (Authenticated) -->
+      <div id="user-menu" class="flex items-center gap-3" style="display: none;">
+        <div class="hidden md:flex items-center gap-2 px-3 py-2 bg-white rounded-full border border-gray-200">
+          <i class="fa fa-user-circle text-[var(--gfe-green)] text-lg"></i>
+          <span id="user-name" class="text-sm font-medium text-[var(--gfe-text)]">User</span>
+        </div>
+        <button id="logout-btn" class="hidden md:inline-block px-4 py-2 rounded-full bg-[var(--gfe-red)] text-white text-sm font-medium hover:bg-red-700 transition shadow-md">
+          <i class="fa fa-sign-out-alt mr-1"></i>Logout
+        </button>
+        <button id="openMenu" aria-label="Open navigation menu" class="p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
+          <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu with overlay backdrop -->
+  <div id="mobileMenu" class="hidden fixed inset-0 bg-black/50 z-50 md:hidden">
+    <div class="bg-white w-4/5 max-w-sm h-full ml-auto p-6 shadow-2xl overflow-y-auto">
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-2">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" alt="GFE Logo" class="w-10 h-10 object-contain" width="40" height="40" />
+          <div>
+            <div class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</div>
+            <div class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</div>
+          </div>
+        </div>
+        <button id="closeMenu" aria-label="Close menu" class="p-2 hover:bg-gray-100 rounded-lg transition">
+          <i class="fa fa-times text-[var(--gfe-text)] text-xl"></i>
+        </button>
+      </div>
+      
+      <!-- Mobile Navigation Links -->
+      <nav class="flex flex-col gap-4">
+        <a href="index.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-home mr-2"></i>Home
+        </a>
+        <a href="shop.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-shopping-bag mr-2"></i>Shop
+        </a>
+        <a href="about.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-info-circle mr-2"></i>About
+        </a>
+        <a href="why-us.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-star mr-2"></i>Why Us
+        </a>
+        <a href="blog.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-blog mr-2"></i>Blog
+        </a>
+        <a href="contact.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-envelope mr-2"></i>Contact
+        </a>
+        <hr class="my-2" />
+        <a href="login.html" class="text-base font-medium text-[var(--gfe-green)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-sign-in-alt mr-2"></i>Sign In
+        </a>
+        <button onclick="checkAuthAndRedirect('marketplace.html')" class="text-left text-base font-medium text-[var(--gfe-green)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-store mr-2"></i>Marketplace
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main id="main" class="max-w-6xl mx-auto px-4">
+    <!-- HERO SECTION -->
+    <section class="mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="flex flex-col gap-4 animate-slide-in">
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-[var(--gfe-text)]">
+          Precision in Process. <span class="text-[var(--gfe-green)]">Purity</span> in Every Pack.
+        </h1>
+        <p class="text-base md:text-lg text-gray-700 leading-relaxed">
+          Hygienically processed Nigerian food — from Geochem's precision lab to your kitchen. Clean, local, and trusted by families across Nigeria.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 mt-4">
+          <button onclick="checkAuthAndRedirect('marketplace.html')" class="px-6 py-3 bg-[var(--gfe-green)] text-white rounded-2xl text-base font-semibold btn-primary btn-glow shadow-lg text-center">
+            <i class="fa fa-shopping-cart mr-2"></i>Shop Now
+          </button>
+          <a href="about.html" class="px-6 py-3 border-2 border-[var(--gfe-gold)] text-[var(--gfe-gold)] rounded-2xl text-base font-semibold btn-secondary text-center">
+            <i class="fa fa-book mr-2"></i>Learn More
+          </a>
+        </div>
+        <div class="flex gap-4 mt-6 text-xs text-gray-600">
+          <div class="flex items-center gap-2">
+            <i class="fa fa-check-circle text-[var(--gfe-green)]"></i>
+            <span>Lab-Tested Quality</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa fa-leaf text-[var(--gfe-green)]"></i>
+            <span>100% Nigerian</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="animate-fade-in delay-200">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1592928301502-bb9b4a2d8e3b?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3" alt="GFE Premium Food Packaging" class="w-full h-96 object-cover floaty" width="800" height="600" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-4 py-2 rounded-lg shadow-lg">
+            <div class="text-xs font-semibold text-[var(--gfe-green)]">
+              <i class="fa fa-check-circle mr-1"></i>Manufactured in Anambra
+            </div>
+            <div class="text-xs text-gray-600">Hygienic • Precision • Pure</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES SECTION -->
+    <section class="mt-16 md:mt-20">
+      <div class="mb-8 animate-slide-in">
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--gfe-text)]">Shop by Category</h2>
+        <p class="text-gray-600 mt-2">Browse our premium Nigerian food products — tap a card to explore.</p>
+      </div>
+      <div id="categories" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+    </section>
+
+    <!-- ABOUT / STORY SECTION -->
+    <section class="mt-16 md:mt-20">
+      <div class="bg-white rounded-2xl p-6 md:p-10 shadow-lg">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="animate-slide-in">
+            <img src="https://images.unsplash.com/photo-1578909194801-5c6c1f0a2f1a?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3" alt="GFE Production Process" class="w-full h-80 object-cover rounded-xl shadow-md" width="800" height="600" />
+          </div>
+          <div class="animate-slide-in delay-200">
+            <h3 class="text-3xl md:text-4xl font-bold text-[var(--gfe-text)] mb-4">
+              From Precision Engineering to <span class="text-[var(--gfe-green)]">Pure Nutrition</span>
+            </h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              Geochem Foods Express grew from Geochem Associates' legacy of precision and excellence. Today, we apply the same scientific rigor, hygiene standards, and commitment to quality to every pack of Nigerian food we produce.
+            </p>
+            <p class="text-gray-700 leading-relaxed mb-6">
+              Based in Nkofia Village, Awka-Etiti, Anambra State, we source locally, process with care, and deliver nationwide — bringing authentic Nigerian flavors to your table with confidence.
+            </p>
+            <a href="about.html" class="inline-block px-6 py-3 border-2 border-[var(--gfe-gold)] text-[var(--gfe-gold)] rounded-xl font-semibold btn-secondary">
+              <i class="fa fa-users mr-2"></i>Meet Our Team
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE GFE SECTION -->
+    <section class="mt-16 md:mt-20">
+      <div class="mb-8 animate-slide-in">
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--gfe-text)]">Why Choose GFE</h2>
+        <p class="text-gray-600 mt-2">Three reasons families trust us.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-8 shadow-md card-hover animate-scale-in">
+          <div class="w-16 h-16 bg-[var(--gfe-green)]/10 rounded-xl flex items-center justify-center mb-4">
+            <i class="fa fa-flask text-[var(--gfe-green)] text-3xl"></i>
+          </div>
+          <h4 class="text-xl font-bold text-[var(--gfe-text)] mb-2">Industrial Precision</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Every process meets lab-grade standards. We don't compromise on quality — your family deserves the best.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-md card-hover animate-scale-in delay-100">
+          <div class="w-16 h-16 bg-[var(--gfe-green)]/10 rounded-xl flex items-center justify-center mb-4">
+            <i class="fa fa-leaf text-[var(--gfe-green)] text-3xl"></i>
+          </div>
+          <h4 class="text-xl font-bold text-[var(--gfe-text)] mb-2">Locally Sourced</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            100% Nigerian produce from trusted farmers. We support local agriculture while ensuring freshness and authenticity.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl p-8 shadow-md card-hover animate-scale-in delay-200">
+          <div class="w-16 h-16 bg-[var(--gfe-green)]/10 rounded-xl flex items-center justify-center mb-4">
+            <i class="fa fa-truck text-[var(--gfe-green)] text-3xl"></i>
+          </div>
+          <h4 class="text-xl font-bold text-[var(--gfe-text)] mb-2">Nationwide Delivery</h4>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Fast, safe, and reliable delivery across Nigeria. Order today, enjoy tomorrow — fresh to your doorstep.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="mt-16 md:mt-20">
+      <div class="mb-8 animate-slide-in">
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--gfe-text)]">What Customers Say</h2>
+        <p class="text-gray-600 mt-2">Real families, real feedback, real trust.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow-md testimonial-card card-hover animate-slide-in">
+          <div class="flex items-center gap-1 mb-3">
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+          </div>
+          <p class="text-gray-700 font-medium mb-4">
+            "GFE rice tastes fresh and pure — my family switched completely. The quality is unmatched!"
+          </p>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Ada from Awka" class="w-10 h-10 rounded-full object-cover" width="40" height="40" />
+            <div>
+              <div class="font-semibold text-sm">Ada</div>
+              <div class="text-xs text-gray-500">Awka, Anambra</div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md testimonial-card card-hover animate-slide-in delay-100">
+          <div class="flex items-center gap-1 mb-3">
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+          </div>
+          <p class="text-gray-700 font-medium mb-4">
+            "They deliver fast, and the palm oil quality is top notch. Best prices in Onitsha!"
+          </p>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1545996124-6f434a9a3a8b?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Tunde from Onitsha" class="w-10 h-10 rounded-full object-cover" width="40" height="40" />
+            <div>
+              <div class="font-semibold text-sm">Tunde</div>
+              <div class="text-xs text-gray-500">Onitsha, Anambra</div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md testimonial-card card-hover animate-slide-in delay-200">
+          <div class="flex items-center gap-1 mb-3">
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+          </div>
+          <p class="text-gray-700 font-medium mb-4">
+            "I trust GFE with my baby's food. The hygiene standards are excellent — peace of mind!"
+          </p>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Chioma from Lagos" class="w-10 h-10 rounded-full object-cover" width="40" height="40" />
+            <div>
+              <div class="font-semibold text-sm">Chioma</div>
+              <div class="text-xs text-gray-500">Lagos, Nigeria</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHATSAPP CTA BANNER -->
+    <section class="mt-16 md:mt-20 mb-16">
+      <div class="rounded-2xl bg-gradient-to-r from-[var(--gfe-green)] to-[#0d3a1a] p-8 md:p-12 shadow-xl">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="text-white">
+            <h3 class="text-2xl md:text-3xl font-bold mb-2">Ready to Order?</h3>
+            <p class="text-white/90 text-base">
+              Chat with us directly on WhatsApp — friendly, fast, and secure. We're here to help!
+            </p>
+            <p class="text-xs text-white/70 mt-3">
+              <i class="fa fa-lock mr-1"></i>Your privacy is protected. We never share your data.
+            </p>
+          </div>
+          <a href="https://wa.me/2348031539847?text=Hello%20GFE%2C%20I%20would%20like%20to%20place%20an%20order.%20Please%20send%20me%20your%20product%20catalog." target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-white text-[var(--gfe-green)] rounded-xl font-bold shadow-lg btn-glow hover:shadow-2xl transition whitespace-nowrap" aria-label="Order via WhatsApp">
+            <i class="fa fa-whatsapp mr-2"></i>Order via WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gradient-to-r from-[var(--gfe-green)]/5 to-[var(--gfe-gold)]/5 border-t border-gray-200 mt-20">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" alt="GFE Logo" class="w-10 h-10 object-contain" width="40" height="40" />
+            <div>
+              <div class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</div>
+              <div class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600">
+            Precision in process. Purity in every pack. Trusted Nigerian food, delivered nationwide.
+          </p>
+        </div>
+        <div>
+          <h4 class="font-bold text-[var(--gfe-green)] mb-4">Contact Us</h4>
+          <div class="space-y-2 text-sm text-gray-700">
+            <div class="flex items-center gap-2">
+              <i class="fa fa-map-marker text-[var(--gfe-red)]"></i>
+              <span>Nkofia Village, Awka-Etiti, Anambra State</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa fa-phone text-[var(--gfe-red)]"></i>
+              <a href="tel:+2348031539847" class="hover:text-[var(--gfe-green)] transition">+234 803 153 9847</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa fa-envelope text-[var(--gfe-red)]"></i>
+              <a href="mailto:geochemfoodsexpress@gmail.com" class="hover:text-[var(--gfe-green)] transition">geochemfoodsexpress@gmail.com</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa fa-clock text-[var(--gfe-red)]"></i>
+              <span>Mon–Sat, 8am–6pm</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-[var(--gfe-green)] mb-4">Follow Us</h4>
+          <div class="flex gap-4 mb-6">
+            <a href="https://wa.me/2348031539847" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-12 h-12 bg-[#25D366] text-white rounded-full flex items-center justify-center hover:brightness-90 transition" title="Chat on WhatsApp">
+              <i class="fab fa-whatsapp text-lg"></i>
+            </a>
+            <a href="https://facebook.com/geochemfoodsexpress" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-12 h-12 bg-[#1877F2] text-white rounded-full flex items-center justify-center hover:brightness-90 transition" title="Follow on Facebook">
+              <i class="fab fa-facebook text-lg"></i>
+            </a>
+            <a href="https://instagram.com/geochemfoodsexpress" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-12 h-12 bg-gradient-to-r from-[#f09433] to-[#e6683c] text-white rounded-full flex items-center justify-center hover:brightness-90 transition" title="Follow on Instagram">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+            <a href="https://twitter.com/geochemfoods" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="w-12 h-12 bg-[#1DA1F2] text-white rounded-full flex items-center justify-center hover:brightness-90 transition" title="Follow on Twitter">
+              <i class="fab fa-twitter text-lg"></i>
+            </a>
+          </div>
+          <div class="bg-white rounded-lg p-4 shadow-sm">
+            <p class="text-xs font-semibold text-gray-600 mb-3">Connect With Us</p>
+            <div class="space-y-2">
+              <a href="https://facebook.com/geochemfoodsexpress" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-gray-700 hover:text-[#1877F2] transition">
+                <i class="fab fa-facebook text-[#1877F2]"></i>
+                <span>Facebook Community</span>
+              </a>
+              <a href="https://instagram.com/geochemfoodsexpress" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-gray-700 hover:text-[#E4405F] transition">
+                <i class="fab fa-instagram text-[#E4405F]"></i>
+                <span>Instagram Feed</span>
+              </a>
+              <a href="https://twitter.com/geochemfoods" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-gray-700 hover:text-[#1DA1F2] transition">
+                <i class="fab fa-twitter text-[#1DA1F2]"></i>
+                <span>Twitter Updates</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-300 pt-6 text-center text-sm text-gray-600">
+        <p>© 2025 Geochem Foods Express. All rights reserved. | Precision • Purity • Pride</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    const categories = [
+      { title: 'Rice & Grains', icon: 'fa-wheat', desc: 'Premium rice, maize, millet' },
+      { title: 'Palm Oil', icon: 'fa-oil-can', desc: 'Pure palm oil, vegetable oil' },
+      { title: 'Spices & Seasoning', icon: 'fa-pepper-hot', desc: 'Authentic Nigerian blends' },
+      { title: 'Garri & Cassava', icon: 'fa-bread-slice', desc: 'Garri, fufu, cassava flour' },
+      { title: 'Snacks & Cereals', icon: 'fa-cookie-bite', desc: 'Chips, biscuits, cereals' },
+      { title: 'Frozen Foods', icon: 'fa-snowflake', desc: 'Frozen chicken, fish, meat' },
+      { title: 'Beverages', icon: 'fa-mug-hot', desc: 'Drinks, juices, powders' },
+      { title: 'Tubers & Roots', icon: 'fa-carrot', desc: 'Yam, sweet potatoes, ginger' }
+    ];
+
+    const container = document.getElementById('categories');
+    categories.forEach((cat, idx) => {
+      const el = document.createElement('div');
+      el.className = 'tilt rounded-xl bg-white p-4 shadow-md cursor-pointer animate-slide-in';
+      el.style.animationDelay = `${idx * 0.05}s`;
+      el.innerHTML = `
+        <div class="tilt-inner flex flex-col items-center text-center gap-3">
+          <div class="w-16 h-16 bg-[var(--gfe-green)]/10 rounded-lg flex items-center justify-center">
+            <i class="fa ${cat.icon} text-[var(--gfe-green)] text-2xl"></i>
+          </div>
+          <div>
+            <div class="text-sm font-bold text-[var(--gfe-text)]">${cat.title}</div>
+            <div class="text-xs text-gray-500">${cat.desc}</div>
+          </div>
+          <div class="text-[var(--gfe-gold)] text-sm"><i class="fa fa-arrow-right"></i></div>
+        </div>
+      `;
+      el.addEventListener('click', () => {
+        checkAuthAndRedirect('marketplace.html');
+      });
+      container.appendChild(el);
+    });
+  </script>
+</body>
+</html>

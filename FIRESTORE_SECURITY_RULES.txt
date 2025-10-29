@@ -1,0 +1,121 @@
+// Firestore Security Rules for Geochem Foods Express
+// Copy and paste these rules into your Firestore Security Rules console
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Users collection - Each user can only read/write their own document
+    match /users/{userId} {
+      allow read, write: if request.auth.uid == userId;
+      allow read: if request.auth.uid != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Products collection - Anyone authenticated can read, only admins can write
+    match /products/{productId} {
+      allow read: if request.auth.uid != null;
+      allow create, update, delete: if request.auth.uid != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Orders collection - Users can read their own orders, admins can read all
+    match /orders/{orderId} {
+      allow read: if request.auth.uid == resource.data.userId || 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+      allow create: if request.auth.uid == request.resource.data.userId;
+      allow update, delete: if request.auth.uid == resource.data.userId || 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Cart collection - Users can only access their own cart
+    match /carts/{userId} {
+      allow read, write: if request.auth.uid == userId;
+    }
+    
+    // Admin logs collection - Only admins can access
+    match /adminLogs/{logId} {
+      allow read, write: if request.auth.uid != null && 
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+  }
+}
+
+// SETUP INSTRUCTIONS:
+// 1. Go to Firebase Console > Firestore Database > Rules
+// 2. Replace the default rules with the above rules
+// 3. Click "Publish"
+// 4. Create the following collections in Firestore:
+//    - users (auto-created by auth)
+//    - products
+//    - orders
+//    - carts
+//    - adminLogs
+
+// COLLECTION STRUCTURE:
+
+// users/{userId}
+// {
+//   uid: string,
+//   email: string,
+//   displayName: string,
+//   phone: string (optional),
+//   createdAt: timestamp,
+//   updatedAt: timestamp,
+//   role: "customer" | "admin",
+//   address: {
+//     street: string,
+//     city: string,
+//     postal: string
+//   },
+//   notifications: {
+//     email: boolean,
+//     sms: boolean,
+//     marketing: boolean
+//   }
+// }
+
+// products/{productId}
+// {
+//   name: string,
+//   category: string,
+//   price: number,
+//   description: string,
+//   image: string (URL),
+//   stock: number,
+//   rating: number,
+//   reviews: number,
+//   createdAt: timestamp,
+//   createdBy: string (admin uid)
+// }
+
+// orders/{orderId}
+// {
+//   userId: string,
+//   orderId: string,
+//   items: [
+//     {
+//       id: string,
+//       name: string,
+//       price: number,
+//       quantity: number
+//     }
+//   ],
+//   total: number,
+//   status: "Pending" | "In Transit" | "Delivered",
+//   date: timestamp,
+//   deliveryAddress: string,
+//   phone: string
+// }
+
+// carts/{userId}
+// {
+//   items: [
+//     {
+//       id: string,
+//       name: string,
+//       price: number,
+//       quantity: number
+//     }
+//   ],
+//   updatedAt: timestamp
+// }

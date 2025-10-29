@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Login — Geochem Foods Express</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    :root {
+      --gfe-green: #1B5E20;
+      --gfe-red: #D32F2F;
+      --gfe-gold: #D4AF37;
+      --gfe-bg: #FAF9F6;
+      --gfe-text: #222222;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--gfe-bg);
+      color: var(--gfe-text);
+      font-family: 'Inter', 'Poppins', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    }
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-slide-in { animation: slideInUp 0.6s ease-out forwards; }
+    .header-sticky {
+      backdrop-filter: blur(10px);
+      background: rgba(250, 249, 246, 0.8);
+    }
+    .btn-primary {
+      background-color: var(--gfe-green);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #0d3a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(27, 94, 32, 0.2);
+    }
+    :focus-visible {
+      outline: 3px solid var(--gfe-green);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 header-sticky border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 group" aria-label="Geochem Foods Express Home">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" alt="Geochem Foods Express Logo" class="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300" width="48" height="48" />
+        <div class="hidden sm:flex flex-col">
+          <span class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</span>
+          <span class="font-semibold text-xs text-[var(--gfe-green)]">Admin Portal</span>
+        </div>
+      </a>
+      <a href="login.html" class="px-4 py-2 rounded-full bg-gray-200 text-[var(--gfe-text)] text-sm font-medium hover:bg-gray-300 transition">
+        Customer Login
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="min-h-screen flex items-center justify-center px-4 py-12">
+    <div class="w-full max-w-md animate-slide-in">
+      <!-- Card -->
+      <div class="bg-white rounded-2xl p-8 shadow-lg">
+        <div class="text-center mb-8">
+          <div class="w-16 h-16 bg-[var(--gfe-red)]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-user-shield text-[var(--gfe-red)] text-3xl"></i>
+          </div>
+          <h1 class="text-3xl font-bold text-[var(--gfe-text)] mb-2">Admin Login</h1>
+          <p class="text-gray-600">Access the admin dashboard</p>
+        </div>
+
+        <!-- Form -->
+        <form id="adminLoginForm" class="space-y-4">
+          <div>
+            <label for="email" class="block text-sm font-medium text-[var(--gfe-text)] mb-2">Email Address</label>
+            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gfe-red)] focus:border-transparent" placeholder="admin@example.com" />
+          </div>
+
+          <div>
+            <label for="password" class="block text-sm font-medium text-[var(--gfe-text)] mb-2">Password</label>
+            <input type="password" id="password" name="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gfe-red)] focus:border-transparent" placeholder="••••••••" />
+          </div>
+
+          <button type="submit" class="w-full px-6 py-3 bg-[var(--gfe-red)] text-white rounded-lg font-semibold btn-primary shadow-md mt-6 hover:bg-[#a02020]">
+            <i class="fa fa-sign-in mr-2"></i>Admin Login
+          </button>
+        </form>
+
+        <!-- Sign Up Link -->
+        <p class="text-center text-sm text-gray-600 mt-6">
+          Not an admin? <a href="login.html" class="text-[var(--gfe-green)] hover:text-[#0d3a1a] font-semibold">Customer login</a>
+        </p>
+      </div>
+
+      <!-- Trust Badge -->
+      <div class="mt-8 text-center text-xs text-gray-600">
+        <p><i class="fa fa-lock text-[var(--gfe-red)] mr-1"></i>Admin access only - Secure login required</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gradient-to-r from-[var(--gfe-green)]/5 to-[var(--gfe-gold)]/5 border-t border-gray-200 mt-20">
+    <div class="max-w-6xl mx-auto px-4 py-8 text-center text-sm text-gray-600">
+      <p>© 2025 Geochem Foods Express. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { signInUser, isAdmin } from './assets/js/auth-firebase.js';
+    
+    document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      // Show loading
+      Swal.fire({
+        title: 'Verifying admin credentials...',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+      
+      const result = await signInUser(email, password);
+      
+      if (result.success) {
+        // Check if user is admin
+        const adminStatus = await isAdmin(result.user.uid);
+        
+        if (adminStatus) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Welcome Admin!',
+            text: 'Login successful',
+            timer: 1500,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = 'admin-dashboard.html';
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Access Denied',
+            text: 'You do not have admin privileges'
+          });
+        }
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Login Failed',
+          text: result.error
+        });
+      }
+    });
+  </script>
+</body>
+</html>

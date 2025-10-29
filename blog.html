@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Blog & Enlightenment Center - Learn about food hygiene, nutrition, and Nigerian cuisine from Geochem Foods Express." />
+  <title>Blog & Enlightenment Center — Geochem Foods Express</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --gfe-green: #1B5E20;
+      --gfe-red: #D32F2F;
+      --gfe-gold: #D4AF37;
+      --gfe-bg: #FAF9F6;
+      --gfe-text: #222222;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--gfe-bg);
+      color: var(--gfe-text);
+      font-family: 'Inter', 'Poppins', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-slide-in { animation: slideInUp 0.6s ease-out forwards; }
+    .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    .animate-scale-in { animation: scaleIn 0.5s ease-out forwards; }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+
+    :focus-visible {
+      outline: 3px solid var(--gfe-green);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background-color: var(--gfe-green);
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0d3a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(27, 94, 32, 0.2);
+    }
+
+    .card-hover { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .card-hover:hover { transform: translateY(-4px); }
+
+    .header-sticky {
+      backdrop-filter: blur(10px);
+      background: rgba(250, 249, 246, 0.8);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--gfe-green);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }
+
+    .skip-link:focus { top: 0; }
+
+    .blog-card {
+      border-top: 4px solid var(--gfe-green);
+    }
+
+    .category-badge {
+      display: inline-block;
+      background: var(--gfe-green)/10;
+      color: var(--gfe-green);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 header-sticky border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 group" aria-label="Geochem Foods Express Home">
+        <img
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png"
+          alt="Geochem Foods Express Logo"
+          class="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300"
+          width="48"
+          height="48"
+        />
+        <div class="hidden sm:flex flex-col">
+          <span class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</span>
+          <span class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Home</a>
+        <a href="shop.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Shop</a>
+        <a href="about.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">About</a>
+        <a href="why-us.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Why Us</a>
+        <a href="blog.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Blog</a>
+        <a href="contact.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="contact.html" class="px-4 py-2 rounded-full bg-[var(--gfe-green)] text-white text-sm font-medium btn-primary shadow-md">
+          Order Now
+        </a>
+        <button id="openMenu" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
+          <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="max-w-6xl mx-auto px-4">
+
+    <!-- HERO SECTION -->
+    <section class="mt-8 md:mt-12 text-center animate-slide-in">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[var(--gfe-text)] mb-4">
+        Blog & <span class="text-[var(--gfe-green)]">Enlightenment Center</span>
+      </h1>
+      <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+        Learn about food hygiene, nutrition tips, Nigerian cuisine, and how to get the most from your GFE products.
+      </p>
+    </section>
+
+    <!-- FEATURED ARTICLE -->
+    <section class="mt-12 md:mt-16">
+      <div class="bg-white rounded-2xl overflow-hidden shadow-lg grid grid-cols-1 md:grid-cols-2 gap-8 items-center p-8 md:p-12 animate-slide-in">
+        <div>
+          <div class="category-badge">Featured</div>
+          <h2 class="text-3xl font-bold text-[var(--gfe-text)] mb-4">
+            The Science Behind Food Hygiene: Why Lab Testing Matters
+          </h2>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            Discover how Geochem Foods Express uses industrial-grade hygiene testing to ensure every pack meets international standards. Learn what makes our process different and why your family's health matters to us.
+          </p>
+          <div class="flex items-center gap-4 text-sm text-gray-600 mb-6">
+            <span><i class="fa fa-calendar mr-2 text-[var(--gfe-green)]"></i>March 15, 2025</span>
+            <span><i class="fa fa-user mr-2 text-[var(--gfe-green)]"></i>Dr. Amara Okafor</span>
+            <span><i class="fa fa-clock mr-2 text-[var(--gfe-green)]"></i>8 min read</span>
+          </div>
+          <a href="#" class="inline-block px-6 py-3 bg-[var(--gfe-green)] text-white rounded-lg font-semibold btn-primary">
+            Read Full Article
+          </a>
+        </div>
+        <div class="h-64 md:h-full bg-gradient-to-br from-[var(--gfe-green)]/10 to-[var(--gfe-gold)]/10 rounded-xl flex items-center justify-center">
+          <i class="fa fa-flask text-[var(--gfe-green)] text-8xl opacity-20"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG ARTICLES GRID -->
+    <section class="mt-16 md:mt-20 mb-16">
+      <h2 class="text-3xl font-bold text-[var(--gfe-text)] mb-12">Latest Articles</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Article 1 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md blog-card card-hover animate-scale-in">
+          <div class="h-40 bg-gradient-to-br from-[var(--gfe-green)]/10 to-[var(--gfe-gold)]/10 flex items-center justify-center">
+            <i class="fa fa-leaf text-[var(--gfe-green)] text-5xl opacity-30"></i>
+          </div>
+          <div class="p-6">
+            <div class="category-badge">Nutrition</div>
+            <h3 class="text-xl font-bold text-[var(--gfe-text)] mb-3">
+              5 Nutritional Benefits of Nigerian Grains
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              Explore the hidden nutritional powerhouses in traditional Nigerian grains and how they support your family's health.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span><i class="fa fa-calendar mr-1"></i>March 10, 2025</span>
+              <span><i class="fa fa-clock mr-1"></i>6 min</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md blog-card card-hover animate-scale-in delay-100">
+          <div class="h-40 bg-gradient-to-br from-[var(--gfe-red)]/10 to-[var(--gfe-gold)]/10 flex items-center justify-center">
+            <i class="fa fa-utensils text-[var(--gfe-red)] text-5xl opacity-30"></i>
+          </div>
+          <div class="p-6">
+            <div class="category-badge">Recipes</div>
+            <h3 class="text-xl font-bold text-[var(--gfe-text)] mb-3">
+              Quick & Easy: Jollof Rice in 30 Minutes
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              Master the art of making perfect jollof rice using GFE premium rice. Step-by-step guide with pro tips.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span><i class="fa fa-calendar mr-1"></i>March 5, 2025</span>
+              <span><i class="fa fa-clock mr-1"></i>5 min</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md blog-card card-hover animate-scale-in delay-200">
+          <div class="h-40 bg-gradient-to-br from-[var(--gfe-gold)]/10 to-[var(--gfe-green)]/10 flex items-center justify-center">
+            <i class="fa fa-home text-[var(--gfe-gold)] text-5xl opacity-30"></i>
+          </div>
+          <div class="p-6">
+            <div class="category-badge">Lifestyle</div>
+            <h3 class="text-xl font-bold text-[var(--gfe-text)] mb-3">
+              Building a Healthy Kitchen: Storage Tips
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              Learn how to properly store your GFE products to maintain freshness and maximize shelf life.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span><i class="fa fa-calendar mr-1"></i>February 28, 2025</span>
+              <span><i class="fa fa-clock mr-1"></i>7 min</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 4 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md blog-card card-hover animate-scale-in">
+          <div class="h-40 bg-gradient-to-br from-[var(--gfe-green)]/10 to-[var(--gfe-red)]/10 flex items-center justify-center">
+            <i class="fa fa-flask text-[var(--gfe-green)] text-5xl opacity-30"></i>
+          </div>
+          <div class="p-6">
+            <div class="category-badge">Education</div>
+            <h3 class="text-xl font-bold text-[var(--gfe-text)] mb-3">
+              Understanding Food Labels: What to Look For
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              A beginner's guide to reading food labels and making informed choices for your family.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span><i class="fa fa-calendar mr-1"></i>February 20, 2025</span>
+              <span><i class="fa fa-clock mr-1"></i>9 min</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 5 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md blog-card card-hover animate-scale-in delay-100">
+          <div class="h-40 bg-gradient-to-br from-[var(--gfe-red)]/10 to-[var(--gfe-green)]/10 flex items-center justify-center">
+            <i class="fa fa-heart text-[var(--gfe-red)] text-5xl opacity-30"></i>
+          </div>
+          <div class="p-6">
+            <div class="category-badge">Health</div>
+            <h3 class="text-xl font-bold text-[var(--gfe-text)] mb-3">
+              Palm Oil: Debunking Myths & Embracing Benefits
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              Discover the truth about palm oil and why it remains a staple in Nigerian cuisine and nutrition.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span><i class="fa fa-calendar mr-1"></i>February 15, 2025</span>
+              <span><i class="fa fa-clock mr-1"></i>8 min</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Article 6 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md blog-card card-hover animate-scale-in delay-200">
+          <div class="h-40 bg-gradient-to-br from-[var(--gfe-gold)]/10 to-[var(--gfe-red)]/10 flex items-center justify-center">
+            <i class="fa fa-globe text-[var(--gfe-gold)] text-5xl opacity-30"></i>
+          </div>
+          <div class="p-6">
+            <div class="category-badge">Sustainability</div>
+            <h3 class="text-xl font-bold text-[var(--gfe-text)] mb-3">
+              Supporting Local Farmers: Our Commitment
+            </h3>
+            <p class="text-gray-600 text-sm mb-4">
+              Learn how GFE partners with local farmers to ensure quality, sustainability, and community growth.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span><i class="fa fa-calendar mr-1"></i>February 10, 2025</span>
+              <span><i class="fa fa-clock mr-1"></i>6 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER SIGNUP -->
+    <section class="mb-16">
+      <div class="rounded-2xl bg-gradient-to-r from-[var(--gfe-green)] to-[#0d3a1a] p-8 md:p-12 shadow-xl text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Stay Updated</h2>
+        <p class="text-white/90 mb-8 max-w-2xl mx-auto">
+          Subscribe to our newsletter for weekly tips, recipes, and exclusive offers delivered to your inbox.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            required
+            class="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gfe-gold)]"
+          />
+          <button type="submit" class="px-6 py-3 bg-[var(--gfe-gold)] text-[var(--gfe-green)] rounded-lg font-semibold btn-primary">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gradient-to-r from-[var(--gfe-green)]/5 to-[var(--gfe-gold)]/5 border-t border-gray-200 mt-20">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png"
+              alt="GFE Logo"
+              class="w-10 h-10 object-contain"
+              width="40"
+              height="40"
+            />
+            <div>
+              <div class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</div>
+              <div class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600">Precision in process. Purity in every pack.</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-[var(--gfe-green)] mb-4">Quick Links</h4>
+          <div class="space-y-2 text-sm">
+            <a href="index.html" class="text-gray-600 hover:text-[var(--gfe-green)] transition">Home</a>
+            <a href="shop.html" class="text-gray-600 hover:text-[var(--gfe-green)] transition block">Shop</a>
+            <a href="about.html" class="text-gray-600 hover:text-[var(--gfe-green)] transition block">About</a>
+            <a href="why-us.html" class="text-gray-600 hover:text-[var(--gfe-green)] transition block">Why Us</a>
+            <a href="blog.html" class="text-gray-600 hover:text-[var(--gfe-green)] transition block">Blog</a>
+            <a href="contact.html" class="text-gray-600 hover:text-[var(--gfe-green)] transition block">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-[var(--gfe-green)] mb-4">Follow Us</h4>
+          <div class="flex gap-4">
+            <a href="https://wa.me/2348031539847" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-12 h-12 bg-[var(--gfe-green)] text-white rounded-full flex items-center justify-center hover:bg-[#0d3a1a] transition">
+              <i class="fa fa-whatsapp text-lg"></i>
+            </a>
+            <a href="#" aria-label="Facebook" class="w-12 h-12 bg-[var(--gfe-red)] text-white rounded-full flex items-center justify-center hover:brightness-90 transition">
+              <i class="fa fa-facebook text-lg"></i>
+            </a>
+            <a href="#" aria-label="Instagram" class="w-12 h-12 bg-[var(--gfe-gold)] text-white rounded-full flex items-center justify-center hover:brightness-90 transition">
+              <i class="fa fa-instagram text-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-300 pt-6 text-center text-sm text-gray-600">
+        <p>© 2025 Geochem Foods Express. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Newsletter form
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for subscribing! Check your email for confirmation.');
+      this.reset();
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

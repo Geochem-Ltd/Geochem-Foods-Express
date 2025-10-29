@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout — Geochem Foods Express</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --gfe-green: #1B5E20;
+      --gfe-red: #D32F2F;
+      --gfe-gold: #D4AF37;
+      --gfe-bg: #FAF9F6;
+      --gfe-text: #222222;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--gfe-bg);
+      color: var(--gfe-text);
+      font-family: 'Inter', 'Poppins', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    }
+    .header-sticky {
+      backdrop-filter: blur(10px);
+      background: rgba(250, 249, 246, 0.8);
+    }
+    .btn-primary {
+      background-color: var(--gfe-green);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #0d3a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(27, 94, 32, 0.2);
+    }
+    .step-active {
+      background-color: var(--gfe-green);
+      color: white;
+    }
+    .step-inactive {
+      background-color: #e0e0e0;
+      color: #666;
+    }
+    :focus-visible {
+      outline: 3px solid var(--gfe-green);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 header-sticky border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 group" aria-label="Geochem Foods Express Home">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" alt="Geochem Foods Express Logo" class="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300" width="48" height="48" />
+        <div class="hidden sm:flex flex-col">
+          <span class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</span>
+          <span class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="marketplace.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Marketplace</a>
+        <a href="about.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">About</a>
+        <a href="contact.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Contact</a>
+      </nav>
+      <a href="marketplace.html" class="px-4 py-2 rounded-full border border-[var(--gfe-green)] text-[var(--gfe-green)] text-sm font-medium hover:bg-[var(--gfe-green)] hover:text-white transition">
+        <i class="fa fa-arrow-left mr-1"></i>Back to Shop
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-[var(--gfe-text)] mb-8">Checkout</h1>
+
+    <!-- Progress Steps -->
+    <div class="flex items-center justify-between mb-8">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full step-active flex items-center justify-center font-bold">1</div>
+        <span class="text-sm font-semibold text-[var(--gfe-text)]">Cart Review</span>
+      </div>
+      <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full step-inactive flex items-center justify-center font-bold">2</div>
+        <span class="text-sm font-semibold text-gray-600">Delivery</span>
+      </div>
+      <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 rounded-full step-inactive flex items-center justify-center font-bold">3</div>
+        <span class="text-sm font-semibold text-gray-600">Confirm</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Cart Items -->
+      <div class="lg:col-span-2">
+        <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+          <h2 class="text-xl font-bold text-[var(--gfe-text)] mb-4">Order Summary</h2>
+          
+          <!-- Cart Items List -->
+          <div class="space-y-4 mb-6">
+            <div class="flex items-center justify-between pb-4 border-b border-gray-200">
+              <div class="flex items-center gap-4">
+                <img src="https://images.unsplash.com/photo-1586985289688-cacf913bb194?q=80&w=100&auto=format&fit=crop" alt="Premium Rice" class="w-16 h-16 rounded-lg object-cover" />
+                <div>
+                  <h3 class="font-semibold text-[var(--gfe-text)]">Premium Parboiled Rice</h3>
+                  <p class="text-sm text-gray-600">5kg bag</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="font-bold text-[var(--gfe-green)]">₦8,500</p>
+                <p class="text-xs text-gray-600">Qty: 1</p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pb-4 border-b border-gray-200">
+              <div class="flex items-center gap-4">
+                <img src="https://images.unsplash.com/photo-1587049352846-4a340bb3138d?q=80&w=100&auto=format&fit=crop" alt="Palm Oil" class="w-16 h-16 rounded-lg object-cover" />
+                <div>
+                  <h3 class="font-semibold text-[var(--gfe-text)]">Pure Palm Oil</h3>
+                  <p class="text-sm text-gray-600">5L container</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="font-bold text-[var(--gfe-green)]">₦12,000</p>
+                <p class="text-xs text-gray-600">Qty: 1</p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pb-4 border-b border-gray-200">
+              <div class="flex items-center gap-4">
+                <img src="https://images.unsplash.com/photo-1596040306625-e6e99d2078b5?q=80&w=100&auto=format&fit=crop" alt="Spices" class="w-16 h-16 rounded-lg object-cover" />
+                <div>
+                  <h3 class="font-semibold text-[var(--gfe-text)]">Nigerian Spice Blend</h3>
+                  <p class="text-sm text-gray-600">500g pack</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="font-bold text-[var(--gfe-green)]">₦3,500</p>
+                <p class="text-xs text-gray-600">Qty: 2</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Delivery Address -->
+          <div class="bg-gray-50 rounded-lg p-4 mb-6">
+            <h3 class="font-semibold text-[var(--gfe-text)] mb-3">Delivery Address</h3>
+            <p class="text-sm text-gray-700">123 Awka Road, Anambra State, Nigeria 420001</p>
+            <button class="text-sm text-[var(--gfe-green)] font-semibold mt-2 hover:underline">
+              <i class="fa fa-edit mr-1"></i>Change Address
+            </button>
+          </div>
+
+          <!-- Promo Code -->
+          <div class="flex gap-2">
+            <input type="text" placeholder="Enter promo code" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gfe-green)]" />
+            <button class="px-4 py-2 border border-[var(--gfe-green)] text-[var(--gfe-green)] rounded-lg font-semibold hover:bg-[var(--gfe-green)] hover:text-white transition">
+              Apply
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Summary Sidebar -->
+      <div class="lg:col-span-1">
+        <div class="bg-white rounded-xl shadow-md p-6 sticky top-24">
+          <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-4">Order Total</h3>
+          
+          <div class="space-y-3 mb-6 pb-6 border-b border-gray-200">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Subtotal</span>
+              <span class="font-semibold">₦24,000</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Delivery Fee</span>
+              <span class="font-semibold">₦2,500</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Tax (5%)</span>
+              <span class="font-semibold">₦1,325</span>
+            </div>
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Discount</span>
+              <span class="font-semibold text-[var(--gfe-green)]">-₦0</span>
+            </div>
+          </div>
+
+          <div class="flex justify-between mb-6">
+            <span class="font-bold text-[var(--gfe-text)]">Total</span>
+            <span class="text-2xl font-bold text-[var(--gfe-green)]">₦27,825</span>
+          </div>
+
+          <!-- WhatsApp Checkout Button -->
+          <button onclick="checkoutWithWhatsApp()" class="w-full px-6 py-4 bg-[#25D366] text-white rounded-lg font-bold btn-primary shadow-lg hover:brightness-90 transition flex items-center justify-center gap-2">
+            <i class="fa fa-whatsapp text-xl"></i>
+            <span>Complete Order via WhatsApp</span>
+          </button>
+
+          <p class="text-xs text-gray-600 text-center mt-4">
+            <i class="fa fa-lock mr-1"></i>Secure checkout powered by WhatsApp
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gradient-to-r from-[var(--gfe-green)]/5 to-[var(--gfe-gold)]/5 border-t border-gray-200 mt-20">
+    <div class="max-w-6xl mx-auto px-4 py-8 text-center text-sm text-gray-600">
+      <p>© 2025 Geochem Foods Express. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function checkoutWithWhatsApp() {
+      const orderDetails = `Hello GFE! I would like to place an order:
+
+*Order Summary:*
+- Premium Parboiled Rice (5kg) - ₦8,500
+- Pure Palm Oil (5L) - ₦12,000
+- Nigerian Spice Blend (500g x2) - ₦3,500
+
+*Subtotal:* ₦24,000
+*Delivery Fee:* ₦2,500
+*Tax (5%):* ₦1,325
+*Total:* ₦27,825
+
+*Delivery Address:*
+123 Awka Road, Anambra State, Nigeria 420001
+
+Please confirm this order and provide payment details.`;
+
+      const encodedMessage = encodeURIComponent(orderDetails);
+      const whatsappURL = `https://wa.me/2348031539847?text=${encodedMessage}`;
+      
+      window.open(whatsappURL, '_blank');
+    }
+  </script>
+</body>
+</html>

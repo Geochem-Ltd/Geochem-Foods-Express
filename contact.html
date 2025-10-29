@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact Geochem Foods Express - Get in touch via WhatsApp, phone, or email. We're here to help!" />
+  <title>Contact Us — Geochem Foods Express</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --gfe-green: #1B5E20;
+      --gfe-red: #D32F2F;
+      --gfe-gold: #D4AF37;
+      --gfe-bg: #FAF9F6;
+      --gfe-text: #222222;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--gfe-bg);
+      color: var(--gfe-text);
+      font-family: 'Inter', 'Poppins', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    .tilt {
+      transform-style: preserve-3d;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      will-change: transform;
+      perspective: 1000px;
+    }
+
+    .tilt-inner { transform-style: preserve-3d; transition: transform 0.18s ease; }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-slide-in { animation: slideInUp 0.6s ease-out forwards; }
+    .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    .animate-scale-in { animation: scaleIn 0.5s ease-out forwards; }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+
+    :focus-visible {
+      outline: 3px solid var(--gfe-green);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background-color: var(--gfe-green);
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0d3a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(27, 94, 32, 0.2);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--gfe-gold);
+      color: var(--gfe-gold);
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--gfe-gold);
+      color: var(--gfe-green);
+      transform: translateY(-2px);
+    }
+
+    .card-hover { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .card-hover:hover { transform: translateY(-4px); }
+
+    .header-sticky {
+      backdrop-filter: blur(10px);
+      background: rgba(250, 249, 246, 0.8);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--gfe-green);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }
+
+    .skip-link:focus { top: 0; }
+
+    .form-input {
+      border: 2px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+      border-color: var(--gfe-green);
+      box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.1);
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 header-sticky border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 group" aria-label="Geochem Foods Express Home">
+        <img
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png"
+          alt="Geochem Foods Express Logo"
+          class="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300"
+          width="48"
+          height="48"
+        />
+        <div class="hidden sm:flex flex-col">
+          <span class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</span>
+          <span class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Home</a>
+        <a href="shop.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Shop</a>
+        <a href="about.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">About</a>
+        <a href="why-us.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Why Us</a>
+        <a href="blog.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Blog</a>
+        <a href="contact.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="index.html#whatsapp" class="px-4 py-2 rounded-full bg-[var(--gfe-green)] text-white text-sm font-medium btn-primary shadow-md">
+          Order Now
+        </a>
+        <button id="openMenu" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
+          <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="max-w-6xl mx-auto px-4">
+
+    <!-- HERO SECTION -->
+    <section class="mt-8 md:mt-12 text-center animate-slide-in">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[var(--gfe-text)] mb-4">
+        Get in <span class="text-[var(--gfe-green)]">Touch</span>
+      </h1>
+      <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+        Have questions? We're here to help. Reach out via WhatsApp, phone, email, or fill out the form below.
+      </p>
+    </section>
+
+    <!-- CONTACT METHODS -->
+    <section class="mt-12 md:mt-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- WhatsApp -->
+        <div class="bg-white rounded-2xl p-8 shadow-md card-hover animate-scale-in">
+          <div class="w-16 h-16 bg-[var(--gfe-green)]/10 rounded-xl flex items-center justify-center mb-4 mx-auto">
+            <i class="fa fa-whatsapp text-[var(--gfe-green)] text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-2">WhatsApp</h3>
+          <p class="text-gray-600 text-center text-sm mb-4">Chat with us instantly for quick responses.</p>
+          <a
+            href="https://wa.me/2348031539847?text=Hello%20GFE%2C%20I%20have%20a%20question."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full py-3 bg-[var(--gfe-green)] text-white rounded-lg font-semibold text-center btn-primary"
+          >
+            <i class="fa fa-whatsapp mr-2"></i>Chat Now
+          </a>
+        </div>
+
+        <!-- Phone -->
+        <div class="bg-white rounded-2xl p-8 shadow-md card-hover animate-scale-in delay-100">
+          <div class="w-16 h-16 bg-[var(--gfe-red)]/10 rounded-xl flex items-center justify-center mb-4 mx-auto">
+            <i class="fa fa-phone text-[var(--gfe-red)] text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-2">Phone</h3>
+          <p class="text-gray-600 text-center text-sm mb-4">Call us during business hours.</p>
+          <a
+            href="tel:+2348031539847"
+            class="block w-full py-3 bg-[var(--gfe-red)] text-white rounded-lg font-semibold text-center btn-primary"
+          >
+            <i class="fa fa-phone mr-2"></i>+234 803 153 9847
+          </a>
+        </div>
+
+        <!-- Email -->
+        <div class="bg-white rounded-2xl p-8 shadow-md card-hover animate-scale-in delay-200">
+          <div class="w-16 h-16 bg-[var(--gfe-gold)]/10 rounded-xl flex items-center justify-center mb-4 mx-auto">
+            <i class="fa fa-envelope text-[var(--gfe-gold)] text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-2">Email</h3>
+          <p class="text-gray-600 text-center text-sm mb-4">Send us an email anytime.</p>
+          <a
+            href="mailto:geochemfoodsexpress@gmail.com"
+            class="block w-full py-3 bg-[var(--gfe-gold)] text-white rounded-lg font-semibold text-center btn-primary"
+          >
+            <i class="fa fa-envelope mr-2"></i>Email Us
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section class="mt-16 md:mt-20">
+      <div class="bg-white rounded-2xl p-8 md:p-12 shadow-lg max-w-2xl mx-auto animate-slide-in">
+        <h2 class="text-3xl font-bold text-[var(--gfe-text)] mb-2">Send us a Message</h2>
+        <p class="text-gray-600 mb-8">Fill out the form below and we'll get back to you within 24 hours.</p>
+
+        <form id="contactForm" class="space-y-6">
+          <!-- Name -->
+          <div>
+            <label for="name" class="block text-sm font-semibold text-[var(--gfe-text)] mb-2">Full Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-3 rounded-lg form-input"
+              placeholder="Your name"
+            />
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-semibold text-[var(--gfe-text)] mb-2">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 rounded-lg form-input"
+              placeholder="your@email.com"
+            />
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label for="phone" class="block text-sm font-semibold text-[var(--gfe-text)] mb-2">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              class="w-full px-4 py-3 rounded-lg form-input"
+              placeholder="+234 803 153 9847"
+            />
+          </div>
+
+          <!-- Subject -->
+          <div>
+            <label for="subject" class="block text-sm font-semibold text-[var(--gfe-text)] mb-2">Subject</label>
+            <select id="subject" name="subject" required class="w-full px-4 py-3 rounded-lg form-input">
+              <option value="">Select a subject</option>
+              <option value="order">Order Inquiry</option>
+              <option value="partnership">Partnership</option>
+              <option value="feedback">Feedback</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label for="message" class="block text-sm font-semibold text-[var(--gfe-text)] mb-2">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              required
+              rows="5"
+              class="w-full px-4 py-3 rounded-lg form-input resize-none"
+              placeholder="Tell us how we can help..."
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full py-3 bg-[var(--gfe-green)] text-white rounded-lg font-semibold btn-primary"
+          >
+            <i class="fa fa-paper-plane mr-2"></i>Send Message
+          </button>
+        </form>
+
+        <p class="text-xs text-gray-500 text-center mt-6">
+          <i class="fa fa-lock mr-1"></i>Your information is secure and will never be shared.
+        </p>
+      </div>
+    </section>
+
+    <!-- BUSINESS HOURS & LOCATION -->
+    <section class="mt-16 md:mt-20 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Hours -->
+        <div class="bg-white rounded-2xl p-8 shadow-md animate-slide-in">
+          <h3 class="text-2xl font-bold text-[var(--gfe-text)] mb-6">Business Hours</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center pb-3 border-b border-gray-200">
+              <span class="font-semibold">Monday - Friday</span>
+              <span class="text-gray-600">8:00 AM - 6:00 PM</span>
+            </div>
+            <div class="flex justify-between items-center pb-3 border-b border-gray-200">
+              <span class="font-semibold">Saturday</span>
+              <span class="text-gray-600">8:00 AM - 4:00 PM</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="font-semibold">Sunday</span>
+              <span class="text-gray-600">Closed</span>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 mt-6">
+            <i class="fa fa-info-circle mr-2 text-[var(--gfe-green)]"></i>
+            WhatsApp messages are answered 24/7.
+          </p>
+        </div>
+
+        <!-- Location -->
+        <div class="bg-white rounded-2xl p-8 shadow-md animate-slide-in delay-100">
+          <h3 class="text-2xl font-bold text-[var(--gfe-text)] mb-6">Our Location</h3>
+          <div class="space-y-4">
+            <div class="flex gap-4">
+              <i class="fa fa-map-marker text-[var(--gfe-red)] text-xl mt-1"></i>
+              <div>
+                <div class="font-semibold">Nkofia Village</div>
+                <div class="text-gray-600 text-sm">Awka-Etiti, Anambra State, Nigeria</div>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <i class="fa fa-phone text-[var(--gfe-red)] text-xl mt-1"></i>
+              <div>
+                <div class="font-semibold">Phone</div>
+                <a href="tel:+2348031539847" class="text-gray-600 text-sm hover:text-[var(--gfe-green)]">+234 803 153 9847</a>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <i class="fa fa-envelope text-[var(--gfe-red)] text-xl mt-1"></i>
+              <div>
+                <div class="font-semibold">Email</div>
+                <a href="mailto:geochemfoodsexpress@gmail.com" class="text-gray-600 text-sm hover:text-[var(--gfe-green)]">geochemfoodsexpress@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gradient-to-r from-[var(--gfe-green)]/5 to-[var(--gfe-gold)]/5 border-t border-gray-200 mt-20">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png"
+              alt="GFE Logo"
+              class="w-10 h-10 object-contain"
+              width="40"
+              height="40"
+            />
+            <div>
+              <div class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</div>
+              <div class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600">Precision in process. Purity in every pack.</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-[var(--gfe-green)] mb-4">Quick Links</h4>
+          <div class="space-y-2 text-sm">
+            <a href="index.html" class="text-gray-600 hover:text-[var(--gfe-green)] transition">Home</a>
+            <a href="shop.html" class="text-gray-600 hover:text-[var(--gfe-green)] transition block">Shop</a>
+            <a href="about.html" class="text-gray-600 hover:text-[var(--gfe-green)] transition block">About</a>
+            <a href="why-us.html" class="text-gray-600 hover:text-[var(--gfe-green)] transition block">Why Us</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-[var(--gfe-green)] mb-4">Follow Us</h4>
+          <div class="flex gap-4">
+            <a href="https://wa.me/2348031539847" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-12 h-12 bg-[var(--gfe-green)] text-white rounded-full flex items-center justify-center hover:bg-[#0d3a1a] transition">
+              <i class="fa fa-whatsapp text-lg"></i>
+            </a>
+            <a href="#" aria-label="Facebook" class="w-12 h-12 bg-[var(--gfe-red)] text-white rounded-full flex items-center justify-center hover:brightness-90 transition">
+              <i class="fa fa-facebook text-lg"></i>
+            </a>
+            <a href="#" aria-label="Instagram" class="w-12 h-12 bg-[var(--gfe-gold)] text-white rounded-full flex items-center justify-center hover:brightness-90 transition">
+              <i class="fa fa-instagram text-lg"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-300 pt-6 text-center text-sm text-gray-600">
+        <p>© 2025 Geochem Foods Express. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will get back to you within 24 hours.');
+      this.reset();
+    });
+
+    // 3D Tilt Effect
+    function attachTilt(selector = '.tilt', maxTilt = 8) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      document.querySelectorAll(selector).forEach(card => {
+        const inner = card.querySelector('.tilt-inner') || card;
+        card.addEventListener('pointermove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width;
+          const y = (e.clientY - rect.top) / rect.height;
+          const rotY = (x - 0.5) * maxTilt;
+          const rotX = (0.5 - y) * maxTilt;
+          inner.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(8px)`;
+          card.style.boxShadow = `${-rotY * 2}px ${rotX * 2}px 32px rgba(27, 94, 32, 0.15)`;
+        });
+        card.addEventListener('pointerleave', () => {
+          inner.style.transform = 'rotateX(0) rotateY(0) translateZ(0)';
+          card.style.boxShadow = '';
+        });
+      });
+    }
+
+    attachTilt('.card-hover', 8);
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

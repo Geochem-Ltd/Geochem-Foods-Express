@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marketplace — Geochem Foods Express</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    :root {
+      --gfe-green: #1B5E20;
+      --gfe-red: #D32F2F;
+      --gfe-gold: #D4AF37;
+      --gfe-bg: #FAF9F6;
+      --gfe-text: #222222;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--gfe-bg);
+      color: var(--gfe-text);
+      font-family: 'Inter', 'Poppins', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    }
+    .sidebar-link {
+      transition: all 0.3s ease;
+    }
+    .sidebar-link:hover {
+      background-color: rgba(27, 94, 32, 0.1);
+      transform: translateX(4px);
+    }
+    .sidebar-link.active {
+      background-color: var(--gfe-green);
+      color: white;
+    }
+    .product-card {
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+    }
+    @media (max-width: 768px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.active { transform: translateX(0); }
+      .main-content { margin-left: 0; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <!-- Transformed into dashboard with sidebar navigation -->
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-white border-r border-gray-200 fixed h-full overflow-y-auto z-40 transition-transform duration-300 md:translate-x-0 -translate-x-full md:translate-x-0">
+      <div class="p-6">
+        <a href="index.html" class="flex items-center gap-2 mb-8">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" alt="GFE Logo" class="w-10 h-10 object-contain" />
+          <div>
+            <div class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</div>
+            <div class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</div>
+          </div>
+        </a>
+
+        <!-- User Profile -->
+        <div class="mb-6 p-4 bg-gradient-to-r from-[var(--gfe-green)]/10 to-[var(--gfe-gold)]/10 rounded-lg">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-[var(--gfe-green)] text-white rounded-full flex items-center justify-center">
+              <i class="fas fa-user text-xl"></i>
+            </div>
+            <div>
+              <div id="user-display-name" class="font-semibold text-sm text-[var(--gfe-text)]">Loading...</div>
+              <div class="text-xs text-gray-600">Customer</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="space-y-2">
+          <a href="marketplace.html" class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium">
+            <i class="fas fa-store w-5"></i>
+            <span>Marketplace</span>
+          </a>
+          <a href="profile.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-user w-5"></i>
+            <span>Profile</span>
+          </a>
+          <a href="analytics.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-chart-line w-5"></i>
+            <span>Analytics</span>
+          </a>
+          <a href="cart.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-shopping-cart w-5"></i>
+            <span>Cart</span>
+          </a>
+          <a href="settings.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-cog w-5"></i>
+            <span>Settings</span>
+          </a>
+          <hr class="my-4" />
+          <button id="logout-btn" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-red)] hover:bg-red-50">
+            <i class="fas fa-sign-out-alt w-5"></i>
+            <span>Logout</span>
+          </button>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Add overlay for mobile sidebar -->
+    <div id="sidebar-overlay" class="hidden fixed inset-0 bg-black/50 z-30 md:hidden"></div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 w-full md:ml-64 p-4 md:p-8 transition-all duration-300">
+      <!-- Mobile Menu Toggle -->
+      <button id="menu-toggle" class="md:hidden mb-4 p-2 bg-white rounded-lg border border-gray-300 hover:bg-gray-50 transition">
+        <i class="fas fa-bars text-[var(--gfe-green)] text-lg"></i>
+      </button>
+
+      <!-- Header -->
+      <header class="mb-8">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div>
+            <h1 id="greeting" class="text-2xl md:text-3xl font-bold text-[var(--gfe-text)] mb-2">Welcome to Your Dashboard</h1>
+            <p class="text-gray-600">Browse our premium Nigerian food products</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <button id="cart-btn" class="relative px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition cursor-pointer">
+              <i class="fas fa-shopping-cart text-[var(--gfe-green)]"></i>
+              <span id="cart-count" class="absolute -top-2 -right-2 w-5 h-5 bg-[var(--gfe-red)] text-white text-xs rounded-full flex items-center justify-center">0</span>
+            </button>
+            <button id="notification-btn" class="relative px-4 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition cursor-pointer">
+              <i class="fas fa-bell text-[var(--gfe-green)]"></i>
+              <span id="notification-count" class="absolute -top-2 -right-2 w-5 h-5 bg-[var(--gfe-red)] text-white text-xs rounded-full flex items-center justify-center hidden">0</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Search & Filter -->
+      <section class="mb-8">
+        <div class="flex flex-col md:flex-row gap-4">
+          <div class="flex-1 relative">
+            <input type="text" id="search-input" placeholder="Search products..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gfe-green)]" />
+            <i class="fas fa-search absolute right-4 top-3.5 text-gray-400"></i>
+          </div>
+          <select id="category-filter" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gfe-green)]">
+            <option value="">All Categories</option>
+          </select>
+          <select id="sort-filter" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--gfe-green)]">
+            <option value="newest">Sort by: Newest</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Best Sellers</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Products Grid -->
+      <section id="products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Products will be populated by JavaScript -->
+      </section>
+    </main>
+  </div>
+
+  <script type="module">
+    import { checkAuth, signOutUser } from './assets/js/auth-firebase.js';
+    import { db } from './assets/js/firebase-config.js';
+    import { collection, onSnapshot, query, where } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+    
+    const user = await checkAuth();
+    if (!user) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Authentication Required',
+        text: 'Please login to access the marketplace',
+        confirmButtonText: 'Go to Login'
+      }).then(() => {
+        window.location.href = 'login.html';
+      });
+    } else {
+      document.getElementById('user-display-name').textContent = user.displayName || user.email;
+      
+      function updateGreeting() {
+        const hour = new Date().getHours();
+        const firstName = (user.displayName || user.email).split(' ')[0];
+        let greeting = '';
+        
+        if (hour < 12) {
+          greeting = `Good morning ${firstName}! What are we buying today?`;
+        } else if (hour < 18) {
+          greeting = `Good afternoon ${firstName}! What are we buying today?`;
+        } else {
+          greeting = `Good evening ${firstName}! What are we buying today?`;
+        }
+        
+        document.getElementById('greeting').textContent = greeting;
+      }
+      
+      updateGreeting();
+      setInterval(updateGreeting, 60000); // Update every minute
+    }
+    
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('-translate-x-full');
+      document.getElementById('sidebar-overlay').classList.toggle('hidden');
+    });
+    
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      const result = await Swal.fire({
+        title: 'Logout?',
+        text: 'Are you sure you want to logout?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, logout',
+        cancelButtonText: 'Cancel'
+      });
+      
+      if (result.isConfirmed) {
+        await signOutUser();
+        Swal.fire({
+          icon: 'success',
+          title: 'Logged Out',
+          text: 'You have been logged out successfully',
+          timer: 1500,
+          showConfirmButton: false
+        }).then(() => {
+          window.location.href = 'index.html';
+        });
+      }
+    });
+    
+    const productsRef = collection(db, 'products');
+    let allProducts = [];
+    
+    onSnapshot(productsRef, (snapshot) => {
+      allProducts = [];
+      const categories = new Set();
+      
+      snapshot.forEach((doc) => {
+        const product = { id: doc.id, ...doc.data() };
+        allProducts.push(product);
+        if (product.category) categories.add(product.category);
+      });
+      
+      // Populate category filter
+      const categoryFilter = document.getElementById('category-filter');
+      categories.forEach(cat => {
+        const option = document.createElement('option');
+        option.value = cat;
+        option.textContent = cat;
+        categoryFilter.appendChild(option);
+      });
+      
+      displayProducts(allProducts);
+    });
+    
+    function displayProducts(products) {
+      const container = document.getElementById('products');
+      container.innerHTML = '';
+      
+      if (products.length === 0) {
+        container.innerHTML = '<div class="col-span-full text-center py-12"><p class="text-gray-600">No products found</p></div>';
+        return;
+      }
+      
+      products.forEach((product) => {
+        const el = document.createElement('div');
+        el.className = 'product-card bg-white rounded-xl shadow-md overflow-hidden';
+        el.innerHTML = `
+          <div class="relative overflow-hidden h-48 bg-gray-200">
+            <img src="${product.image || 'https://via.placeholder.com/300x200?text=' + encodeURIComponent(product.name)}" alt="${product.name}" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300" />
+            <div class="absolute top-3 right-3 bg-[var(--gfe-gold)] text-[var(--gfe-green)] px-3 py-1 rounded-full text-xs font-semibold">
+              ${product.category || 'General'}
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-[var(--gfe-text)] mb-2 line-clamp-2">${product.name}</h3>
+            <div class="flex items-center gap-1 mb-3">
+              <div class="flex text-[var(--gfe-gold)]">
+                ${Array(5).fill().map((_, i) => `<i class="fas fa-star${i < Math.floor(product.rating || 0) ? '' : ' far'} text-xs"></i>`).join('')}
+              </div>
+              <span class="text-xs text-gray-600">(${product.reviews || 0})</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-lg font-bold text-[var(--gfe-green)]">₦${(product.price || 0).toLocaleString()}</span>
+              <button class="px-3 py-2 bg-[var(--gfe-green)] text-white rounded-lg text-sm font-medium hover:bg-[#0d3a1a] transition" onclick="addToCart('${product.id}', '${product.name}', ${product.price})">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+            </div>
+          </div>
+        `;
+        container.appendChild(el);
+      });
+    }
+    
+    window.addToCart = function(productId, productName, price) {
+      let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const existingItem = cart.find(item => item.id === productId);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ id: productId, name: productName, price, quantity: 1 });
+      }
+      
+      localStorage.setItem('cart', JSON.stringify(cart));
+      document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Added to Cart!',
+        text: `${productName} has been added to your cart`,
+        timer: 1500,
+        showConfirmButton: false
+      });
+    };
+    
+    document.getElementById('search-input').addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const filtered = allProducts.filter(p => p.name.toLowerCase().includes(searchTerm));
+      displayProducts(filtered);
+    });
+    
+    document.getElementById('category-filter').addEventListener('change', (e) => {
+      const category = e.target.value;
+      const filtered = category ? allProducts.filter(p => p.category === category) : allProducts;
+      displayProducts(filtered);
+    });
+    
+    document.getElementById('sort-filter').addEventListener('change', (e) => {
+      const sortType = e.target.value;
+      let sorted = [...allProducts];
+      
+      if (sortType === 'price-low') {
+        sorted.sort((a, b) => a.price - b.price);
+      } else if (sortType === 'price-high') {
+        sorted.sort((a, b) => b.price - a.price);
+      } else if (sortType === 'rating') {
+        sorted.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+      }
+      
+      displayProducts(sorted);
+    });
+    
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    
+    document.getElementById('cart-btn').addEventListener('click', () => {
+      window.location.href = 'cart.html';
+    });
+    
+    document.getElementById('notification-btn').addEventListener('click', () => {
+      Swal.fire({
+        title: 'Notifications',
+        html: '<p class="text-gray-600">No new notifications</p>',
+        icon: 'info',
+        didOpen: () => {
+          document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+        }
+      });
+    });
+    
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const menuToggle = document.getElementById('menu-toggle');
+    
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+      overlay.classList.toggle('hidden');
+    });
+    
+    overlay.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+    });
+    
+    // Close sidebar when clicking on a link
+    document.querySelectorAll('#sidebar a').forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

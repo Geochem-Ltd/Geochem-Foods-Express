@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Shop Geochem Foods Express - Premium Nigerian food products delivered nationwide." />
+  <title>Shop — Geochem Foods Express</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    :root {
+      --gfe-green: #1B5E20;
+      --gfe-red: #D32F2F;
+      --gfe-gold: #D4AF37;
+      --gfe-bg: #FAF9F6;
+      --gfe-text: #222222;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--gfe-bg);
+      color: var(--gfe-text);
+      font-family: 'Inter', 'Poppins', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    .tilt {
+      transform-style: preserve-3d;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      will-change: transform;
+      perspective: 1000px;
+    }
+
+    .tilt-inner { transform-style: preserve-3d; transition: transform 0.18s ease; }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-slide-in { animation: slideInUp 0.6s ease-out forwards; }
+    .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    .animate-scale-in { animation: scaleIn 0.5s ease-out forwards; }
+
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+
+    :focus-visible {
+      outline: 3px solid var(--gfe-green);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background-color: var(--gfe-green);
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #0d3a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(27, 94, 32, 0.2);
+    }
+
+    .card-hover { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .card-hover:hover { transform: translateY(-4px); }
+
+    .header-sticky {
+      backdrop-filter: blur(10px);
+      background: rgba(250, 249, 246, 0.8);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--gfe-green);
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }
+
+    .skip-link:focus { top: 0; }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--gfe-red);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 header-sticky border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 group" aria-label="Geochem Foods Express Home">
+        <img
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png"
+          alt="Geochem Foods Express Logo"
+          class="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300"
+          width="48"
+          height="48"
+        />
+        <div class="hidden sm:flex flex-col">
+          <span class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</span>
+          <span class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</span>
+        </div>
+      </a>
+
+      <!-- Navigation (Desktop - Public) -->
+      <nav id="public-nav" class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Home</a>
+        <a href="shop.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Shop</a>
+        <a href="about.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">About</a>
+        <a href="why-us.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Why Us</a>
+        <a href="blog.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Blog</a>
+        <a href="contact.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Contact</a>
+      </nav>
+
+      <!-- Navigation (Desktop - Authenticated) -->
+      <nav id="private-nav" class="hidden md:flex items-center gap-6" style="display: none;">
+        <a href="marketplace.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Marketplace</a>
+        <a href="profile.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Profile</a>
+        <a href="analytics.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Analytics</a>
+        <a href="settings.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Settings</a>
+        <a href="checkout.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Checkout</a>
+      </nav>
+
+      <!-- CTA Buttons (Public) -->
+      <div id="auth-buttons" class="flex items-center gap-2">
+        <button onclick="checkAuthAndRedirect('marketplace.html')" class="px-4 py-2 rounded-full bg-[var(--gfe-gold)] text-[var(--gfe-green)] text-sm font-medium btn-primary shadow-md hover:bg-[var(--gfe-green)] hover:text-white">
+          <i class="fa fa-store mr-1"></i>Marketplace
+        </button>
+        <a href="login.html" class="px-4 py-2 rounded-full bg-[var(--gfe-green)] text-white text-sm font-medium btn-primary shadow-md">
+          Sign In
+        </a>
+        <button id="openMenu" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
+          <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
+        </button>
+      </div>
+
+      <!-- User Menu (Authenticated) -->
+      <div id="user-menu" class="flex items-center gap-3" style="display: none;">
+        <div class="hidden md:flex items-center gap-2 px-3 py-2 bg-white rounded-full border border-gray-200">
+          <i class="fa fa-user-circle text-[var(--gfe-green)] text-lg"></i>
+          <span id="user-name" class="text-sm font-medium text-[var(--gfe-text)]">User</span>
+        </div>
+        <button id="logout-btn" class="px-4 py-2 rounded-full bg-[var(--gfe-red)] text-white text-sm font-medium hover:bg-red-700 transition shadow-md">
+          <i class="fa fa-sign-out-alt mr-1"></i>Logout
+        </button>
+        <button id="openMenu" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
+          <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="max-w-6xl mx-auto px-4">
+
+    <!-- HERO SECTION -->
+    <section class="mt-8 md:mt-12 text-center animate-slide-in">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-[var(--gfe-text)] mb-4">
+        Featured <span class="text-[var(--gfe-green)]">Products</span>
+      </h1>
+      <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+        Explore our showcase of premium Nigerian food products. Sign in to marketplace to purchase and access real-time inventory.
+      </p>
+      <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="login.html" class="px-6 py-3 bg-[var(--gfe-green)] text-white rounded-2xl text-base font-semibold btn-primary">
+          <i class="fa fa-sign-in-alt mr-2"></i>Sign In to Marketplace
+        </a>
+        <a href="signup.html" class="px-6 py-3 border-2 border-[var(--gfe-green)] text-[var(--gfe-green)] rounded-2xl text-base font-semibold hover:bg-[var(--gfe-green)] hover:text-white transition">
+          <i class="fa fa-user-plus mr-2"></i>Create Account
+        </a>
+      </div>
+    </section>
+
+    <!-- FILTER SECTION -->
+    <section class="mt-12 md:mt-16">
+      <div class="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-[var(--gfe-text)]">All Products</h2>
+        <div class="flex gap-2 flex-wrap">
+          <button class="px-4 py-2 rounded-full bg-[var(--gfe-green)] text-white text-sm font-medium btn-primary">All</button>
+          <button class="px-4 py-2 rounded-full border-2 border-[var(--gfe-green)] text-[var(--gfe-green)] text-sm font-medium hover:bg-[var(--gfe-green)] hover:text-white transition">Grains</button>
+          <button class="px-4 py-2 rounded-full border-2 border-[var(--gfe-green)] text-[var(--gfe-green)] text-sm font-medium hover:bg-[var(--gfe-green)] hover:text-white transition">Oils</button>
+          <button class="px-4 py-2 rounded-full border-2 border-[var(--gfe-green)] text-[var(--gfe-green)] text-sm font-medium hover:bg-[var(--gfe-green)] hover:text-white transition">Spices</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS GRID -->
+    <section id="products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      <!-- Product 1 -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover animate-scale-in">
+        <div class="relative h-48 bg-gradient-to-br from-[var(--gfe-green)]/10 to-[var(--gfe-gold)]/10 flex items-center justify-center">
+          <i class="fa fa-wheat text-[var(--gfe-green)] text-6xl opacity-30"></i>
+          <div class="product-badge">Premium</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-2">Premium Parboiled Rice</h3>
+          <p class="text-sm text-gray-600 mb-4">50kg bag - Pure, white, and fluffy. Perfect for every meal.</p>
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <span class="text-2xl font-bold text-[var(--gfe-green)]">₦18,500</span>
+              <span class="text-sm text-gray-500 line-through ml-2">₦20,000</span>
+            </div>
+            <div class="flex gap-1">
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            </div>
+          </div>
+          <a href="contact.html" class="block w-full py-2 bg-[var(--gfe-green)] text-white rounded-lg font-semibold text-center btn-primary text-sm">
+            <i class="fa fa-shopping-cart mr-2"></i>Order Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover animate-scale-in delay-100">
+        <div class="relative h-48 bg-gradient-to-br from-[var(--gfe-red)]/10 to-[var(--gfe-gold)]/10 flex items-center justify-center">
+          <i class="fa fa-oil-can text-[var(--gfe-red)] text-6xl opacity-30"></i>
+          <div class="product-badge">Best Seller</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-2">Pure Palm Oil</h3>
+          <p class="text-sm text-gray-600 mb-4">5L bottle - Fresh, unrefined, and authentic Nigerian palm oil.</p>
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <span class="text-2xl font-bold text-[var(--gfe-green)]">₦8,500</span>
+              <span class="text-sm text-gray-500 line-through ml-2">₦10,000</span>
+            </div>
+            <div class="flex gap-1">
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star-half text-[var(--gfe-gold)]"></i>
+            </div>
+          </div>
+          <a href="contact.html" class="block w-full py-2 bg-[var(--gfe-green)] text-white rounded-lg font-semibold text-center btn-primary text-sm">
+            <i class="fa fa-shopping-cart mr-2"></i>Order Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover animate-scale-in delay-200">
+        <div class="relative h-48 bg-gradient-to-br from-[var(--gfe-gold)]/10 to-[var(--gfe-red)]/10 flex items-center justify-center">
+          <i class="fa fa-pepper-hot text-[var(--gfe-gold)] text-6xl opacity-30"></i>
+          <div class="product-badge">New</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-2">Spice Blend Mix</h3>
+          <p class="text-sm text-gray-600 mb-4">500g - Traditional Nigerian seasoning blend for authentic taste.</p>
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <span class="text-2xl font-bold text-[var(--gfe-green)]">₦3,500</span>
+              <span class="text-sm text-gray-500 line-through ml-2">₦4,500</span>
+            </div>
+            <div class="flex gap-1">
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            </div>
+          </div>
+          <a href="contact.html" class="block w-full py-2 bg-[var(--gfe-green)] text-white rounded-lg font-semibold text-center btn-primary text-sm">
+            <i class="fa fa-shopping-cart mr-2"></i>Order Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover animate-scale-in">
+        <div class="relative h-48 bg-gradient-to-br from-[var(--gfe-green)]/10 to-[var(--gfe-red)]/10 flex items-center justify-center">
+          <i class="fa fa-bread-slice text-[var(--gfe-green)] text-6xl opacity-30"></i>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-2">Premium Garri</h3>
+          <p class="text-sm text-gray-600 mb-4">25kg bag - Fine, white garri for smooth swallows.</p>
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <span class="text-2xl font-bold text-[var(--gfe-green)]">₦12,000</span>
+              <span class="text-sm text-gray-500 line-through ml-2">₦14,000</span>
+            </div>
+            <div class="flex gap-1">
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            </div>
+          </div>
+          <a href="contact.html" class="block w-full py-2 bg-[var(--gfe-green)] text-white rounded-lg font-semibold text-center btn-primary text-sm">
+            <i class="fa fa-shopping-cart mr-2"></i>Order Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover animate-scale-in delay-100">
+        <div class="relative h-48 bg-gradient-to-br from-[var(--gfe-gold)]/10 to-[var(--gfe-green)]/10 flex items-center justify-center">
+          <i class="fa fa-cookie-bite text-[var(--gfe-gold)] text-6xl opacity-30"></i>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-2">Snack Mix Pack</h3>
+          <p class="text-sm text-gray-600 mb-4">Assorted - Chips, biscuits, and cereals combo pack.</p>
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <span class="text-2xl font-bold text-[var(--gfe-green)]">₦5,500</span>
+              <span class="text-sm text-gray-500 line-through ml-2">₦7,000</span>
+            </div>
+            <div class="flex gap-1">
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star-half text-[var(--gfe-gold)]"></i>
+            </div>
+          </div>
+          <a href="contact.html" class="block w-full py-2 bg-[var(--gfe-green)] text-white rounded-lg font-semibold text-center btn-primary text-sm">
+            <i class="fa fa-shopping-cart mr-2"></i>Order Now
+          </a>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="bg-white rounded-2xl overflow-hidden shadow-md card-hover animate-scale-in delay-200">
+        <div class="relative h-48 bg-gradient-to-br from-[var(--gfe-blue)]/10 to-[var(--gfe-green)]/10 flex items-center justify-center">
+          <i class="fa fa-snowflake text-[var(--gfe-green)] text-6xl opacity-30"></i>
+        </div>
+        <div class="p-6">
+          <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-2">Frozen Chicken</h3>
+          <p class="text-sm text-gray-600 mb-4">5kg pack - Fresh, hygienically processed frozen chicken.</p>
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <span class="text-2xl font-bold text-[var(--gfe-green)]">₦22,000</span>
+              <span class="text-sm text-gray-500 line-through ml-2">₦25,000</span>
+            </div>
+            <div class="flex gap-1">
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+              <i class="fa fa-star text-[var(--gfe-gold)]"></i>
+            </div>
+          </div>
+          <a href="contact.html" class="block w-full py-2 bg-[var(--gfe-green)] text-white rounded-lg font-semibold text-center btn-primary text-sm">
+            <i class="fa fa-shopping-cart mr-2"></i>Order Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="mb-16">
+      <div class="rounded-2xl bg-gradient-to-r from-[var(--gfe-green)] to-[#0d3a1a] p-8 md:p-12 shadow-xl text-center">
+        <h2 class="text-3xl font-bold text-white mb-4">Bulk Orders & Wholesale</h2>
+        <p class="text-white/90 mb-6 max-w-2xl mx-auto">
+          Looking for bulk quantities? We offer special wholesale pricing for retailers, restaurants, and corporate clients.
+        </p>
+        <a href="contact.html" class="inline-block px-8 py-3 bg-white text-[var(--gfe-green)] rounded-lg font-semibold btn-primary">
+          <i class="fa fa-handshake mr-2"></i>Get Wholesale Quote
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-gradient-to-r from-[var(--gfe-green)]/5 to-[var(--gfe-gold)]/5 border-t border-gray-200 mt-20">
+    <div class="max-w-6xl mx-auto px-4 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <div class="flex items-center gap-2 mb-4">
+            <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png"
+              alt="GFE Logo"
+              class="w-10 h-10 object-contain"
+              width="40"
+              height="40"
+            />
+            <div>
+              <div class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</div>
+              <div class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</div>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600">Precision in process. Purity in every pack.</p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-[var(--gfe-green)] mb-4">Contact Us</h4>
+          <div class="space-y-2 text-sm text-gray-700">
+            <div class="flex items-center gap-2">
+              <i class="fa fa-map-marker text-[var(--gfe-red)]"></i>
+              <span>Nkofia Village, Awka-Etiti, Anambra State</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa fa-phone text-[var(--gfe-red)]"></i>
+              <a href="tel:+2348031539847" class="hover:text-[var(--gfe-green)] transition">+234 803 153 9847</a>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa fa-envelope text-[var(--gfe-red)]"></i>
+              <a href="mailto:geochemfoodsexpress@gmail.com" class="hover:text-[var(--gfe-green)] transition">geochemfoodsexpress@gmail.com</a>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-[var(--gfe-green)] mb-4">Follow Us</h4>
+          <div class="flex gap-4 mb-6">
+            <a href="https://wa.me/2348031539847" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-12 h-12 bg-[#25D366] text-white rounded-full flex items-center justify-center hover:brightness-90 transition" title="Chat on WhatsApp">
+              <i class="fab fa-whatsapp text-lg"></i>
+            </a>
+            <a href="https://facebook.com/geochemfoodsexpress" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-12 h-12 bg-[#1877F2] text-white rounded-full flex items-center justify-center hover:brightness-90 transition" title="Follow on Facebook">
+              <i class="fab fa-facebook text-lg"></i>
+            </a>
+            <a href="https://instagram.com/geochemfoodsexpress" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-12 h-12 bg-gradient-to-r from-[#f09433] to-[#e6683c] text-white rounded-full flex items-center justify-center hover:brightness-90 transition" title="Follow on Instagram">
+              <i class="fab fa-instagram text-lg"></i>
+            </a>
+            <a href="https://twitter.com/geochemfoods" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="w-12 h-12 bg-[#1DA1F2] text-white rounded-full flex items-center justify-center hover:brightness-90 transition" title="Follow on Twitter">
+              <i class="fab fa-twitter text-lg"></i>
+            </a>
+          </div>
+          <div class="bg-white rounded-lg p-4 shadow-sm">
+            <p class="text-xs font-semibold text-gray-600 mb-3">Connect With Us</p>
+            <div class="space-y-2">
+              <a href="https://facebook.com/geochemfoodsexpress" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-gray-700 hover:text-[#1877F2] transition">
+                <i class="fab fa-facebook text-[#1877F2]"></i>
+                <span>Facebook Community</span>
+              </a>
+              <a href="https://instagram.com/geochemfoodsexpress" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-gray-700 hover:text-[#E4405F] transition">
+                <i class="fab fa-instagram text-[#E4405F]"></i>
+                <span>Instagram Feed</span>
+              </a>
+              <a href="https://twitter.com/geochemfoods" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-sm text-gray-700 hover:text-[#1DA1F2] transition">
+                <i class="fab fa-twitter text-[#1DA1F2]"></i>
+                <span>Twitter Updates</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-300 pt-6 text-center text-sm text-gray-600">
+        <p>© 2025 Geochem Foods Express. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // 3D Tilt Effect
+    function attachTilt(selector = '.tilt', maxTilt = 8) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+
+      document.querySelectorAll(selector).forEach(card => {
+        const inner = card.querySelector('.tilt-inner') || card;
+        card.addEventListener('pointermove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width;
+          const y = (e.clientY - rect.top) / rect.height;
+          const rotY = (x - 0.5) * maxTilt;
+          const rotX = (0.5 - y) * maxTilt;
+          inner.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(8px)`;
+          card.style.boxShadow = `${-rotY * 2}px ${rotX * 2}px 32px rgba(27, 94, 32, 0.15)`;
+        });
+        card.addEventListener('pointerleave', () => {
+          inner.style.transform = 'rotateX(0) rotateY(0) translateZ(0)';
+          card.style.boxShadow = '';
+        });
+      });
+    }
+
+    attachTilt('.card-hover', 8);
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+          e.preventDefault();
+          document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

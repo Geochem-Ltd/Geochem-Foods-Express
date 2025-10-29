@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Profile — Geochem Foods Express</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    :root {
+      --gfe-green: #1B5E20;
+      --gfe-red: #D32F2F;
+      --gfe-gold: #D4AF37;
+      --gfe-bg: #FAF9F6;
+      --gfe-text: #222222;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--gfe-bg);
+      color: var(--gfe-text);
+      font-family: 'Inter', 'Poppins', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    }
+    .sidebar-link {
+      transition: all 0.3s ease;
+    }
+    .sidebar-link:hover {
+      background-color: rgba(27, 94, 32, 0.1);
+      transform: translateX(4px);
+    }
+    .sidebar-link.active {
+      background-color: var(--gfe-green);
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.active { transform: translateX(0); }
+      .main-content { margin-left: 0; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-white border-r border-gray-200 fixed h-full overflow-y-auto z-40 transition-transform duration-300 md:translate-x-0">
+      <div class="p-6">
+        <a href="index.html" class="flex items-center gap-2 mb-8">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" alt="GFE Logo" class="w-10 h-10 object-contain" />
+          <div>
+            <div class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</div>
+            <div class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</div>
+          </div>
+        </a>
+
+        <!-- User Profile -->
+        <div class="mb-6 p-4 bg-gradient-to-r from-[var(--gfe-green)]/10 to-[var(--gfe-gold)]/10 rounded-lg">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-[var(--gfe-green)] text-white rounded-full flex items-center justify-center">
+              <i class="fas fa-user text-xl"></i>
+            </div>
+            <div>
+              <div id="user-display-name" class="font-semibold text-sm text-[var(--gfe-text)]">Loading...</div>
+              <div class="text-xs text-gray-600">Customer</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="space-y-2">
+          <a href="marketplace.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-store w-5"></i>
+            <span>Marketplace</span>
+          </a>
+          <a href="profile.html" class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium">
+            <i class="fas fa-user w-5"></i>
+            <span>Profile</span>
+          </a>
+          <a href="analytics.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-chart-line w-5"></i>
+            <span>Analytics</span>
+          </a>
+          <a href="cart.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-shopping-cart w-5"></i>
+            <span>Cart</span>
+          </a>
+          <a href="settings.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-cog w-5"></i>
+            <span>Settings</span>
+          </a>
+          <!-- Removed "Back to Home" link from sidebar -->
+          <button id="logout-btn" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-red)] hover:bg-red-50">
+            <i class="fas fa-sign-out-alt w-5"></i>
+            <span>Logout</span>
+          </button>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 md:ml-64 p-4 md:p-8 transition-all duration-300">
+      <!-- Mobile Menu Toggle -->
+      <button id="menu-toggle" class="md:hidden mb-4 p-2 bg-white rounded-lg border border-gray-300">
+        <i class="fas fa-bars text-[var(--gfe-green)]"></i>
+      </button>
+
+      <!-- Profile Header -->
+      <div class="bg-white rounded-xl shadow-md p-6 md:p-8 mb-6">
+        <div class="flex flex-col md:flex-row items-start md:items-center gap-6 mb-6">
+          <div class="w-24 h-24 bg-[var(--gfe-green)]/10 rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-user text-[var(--gfe-green)] text-4xl"></i>
+          </div>
+          <div class="flex-1">
+            <h1 id="profile-name" class="text-2xl md:text-3xl font-bold text-[var(--gfe-text)] mb-2">Loading...</h1>
+            <p id="profile-email" class="text-gray-600 mb-3">Loading...</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-[var(--gfe-green)]/10 text-[var(--gfe-green)] rounded-full text-xs font-semibold">
+                <i class="fas fa-check-circle mr-1"></i>Verified
+              </span>
+              <span class="px-3 py-1 bg-[var(--gfe-gold)]/10 text-[var(--gfe-gold)] rounded-full text-xs font-semibold">
+                <i class="fas fa-star mr-1"></i>Member
+              </span>
+            </div>
+          </div>
+          <button id="edit-profile-btn" class="px-6 py-3 bg-[var(--gfe-green)] text-white rounded-lg font-semibold hover:bg-[#0d3a1a] transition whitespace-nowrap">
+            <i class="fas fa-edit mr-2"></i>Edit Profile
+          </button>
+        </div>
+      </div>
+
+      <!-- Profile Information -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Personal Information -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-4">Personal Information</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="text-sm text-gray-600">Full Name</label>
+              <p id="info-name" class="font-semibold text-[var(--gfe-text)]">Loading...</p>
+            </div>
+            <div>
+              <label class="text-sm text-gray-600">Email Address</label>
+              <p id="info-email" class="font-semibold text-[var(--gfe-text)]">Loading...</p>
+            </div>
+            <div>
+              <label class="text-sm text-gray-600">Phone Number</label>
+              <p id="info-phone" class="font-semibold text-[var(--gfe-text)]">Not set</p>
+            </div>
+            <div>
+              <label class="text-sm text-gray-600">Member Since</label>
+              <p id="info-joined" class="font-semibold text-[var(--gfe-text)]">Loading...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delivery Address -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-4">Delivery Address</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="text-sm text-gray-600">Street Address</label>
+              <p id="addr-street" class="font-semibold text-[var(--gfe-text)]">Not set</p>
+            </div>
+            <div>
+              <label class="text-sm text-gray-600">City / State</label>
+              <p id="addr-city" class="font-semibold text-[var(--gfe-text)]">Not set</p>
+            </div>
+            <div>
+              <label class="text-sm text-gray-600">Postal Code</label>
+              <p id="addr-postal" class="font-semibold text-[var(--gfe-text)]">Not set</p>
+            </div>
+            <button id="update-address-btn" class="w-full px-4 py-2 border border-[var(--gfe-green)] text-[var(--gfe-green)] rounded-lg font-semibold hover:bg-[var(--gfe-green)] hover:text-white transition">
+              <i class="fas fa-edit mr-2"></i>Update Address
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Orders -->
+      <div class="bg-white rounded-xl shadow-md p-6 mt-6">
+        <h3 class="text-lg font-bold text-[var(--gfe-text)] mb-4">Recent Orders</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="border-b border-gray-200">
+              <tr>
+                <th class="text-left py-3 px-4 font-semibold text-gray-600">Order ID</th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-600">Date</th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-600">Total</th>
+                <th class="text-left py-3 px-4 font-semibold text-gray-600">Status</th>
+              </tr>
+            </thead>
+            <tbody id="orders-table">
+              <tr class="border-b border-gray-100">
+                <td class="py-3 px-4 text-gray-600">No orders yet</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module">
+    import { checkAuth, signOutUser, getUserData, updateUserProfile } from './assets/js/auth-firebase.js';
+    import { db } from './assets/js/firebase-config.js';
+    import { collection, query, where, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+    
+    const user = await checkAuth();
+    if (!user) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Authentication Required',
+        text: 'Please login to access your profile',
+        confirmButtonText: 'Go to Login'
+      }).then(() => {
+        window.location.href = 'login.html';
+      });
+    } else {
+      document.getElementById('user-display-name').textContent = user.displayName || user.email;
+      
+      const userData = await getUserData(user.uid);
+      if (userData.success) {
+        const data = userData.data;
+        document.getElementById('profile-name').textContent = data.displayName || 'User';
+        document.getElementById('profile-email').textContent = data.email;
+        document.getElementById('info-name').textContent = data.displayName || 'Not set';
+        document.getElementById('info-email').textContent = data.email;
+        document.getElementById('info-phone').textContent = data.phone || 'Not set';
+        document.getElementById('info-joined').textContent = new Date(data.createdAt).toLocaleDateString();
+        
+        // Load address if exists
+        if (data.address) {
+          document.getElementById('addr-street').textContent = data.address.street || 'Not set';
+          document.getElementById('addr-city').textContent = data.address.city || 'Not set';
+          document.getElementById('addr-postal').textContent = data.address.postal || 'Not set';
+        }
+      }
+    }
+    
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('active');
+    });
+    
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      const result = await Swal.fire({
+        title: 'Logout?',
+        text: 'Are you sure you want to logout?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, logout',
+        cancelButtonText: 'Cancel'
+      });
+      
+      if (result.isConfirmed) {
+        await signOutUser();
+        Swal.fire({
+          icon: 'success',
+          title: 'Logged Out',
+          timer: 1500,
+          showConfirmButton: false
+        }).then(() => {
+          window.location.href = 'index.html';
+        });
+      }
+    });
+    
+    document.getElementById('edit-profile-btn').addEventListener('click', async () => {
+      const { value: formValues } = await Swal.fire({
+        title: 'Edit Profile',
+        html: `
+          <input id="swal-name" class="swal2-input" placeholder="Full Name" value="${user.displayName || ''}">
+          <input id="swal-phone" class="swal2-input" placeholder="Phone Number">
+        `,
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: 'Save Changes',
+        didOpen: () => {
+          document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+        },
+        preConfirm: () => {
+          return {
+            displayName: document.getElementById('swal-name').value,
+            phone: document.getElementById('swal-phone').value
+          }
+        }
+      });
+      
+      if (formValues) {
+        const result = await updateUserProfile(user.uid, formValues);
+        if (result.success) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Profile updated successfully',
+            didOpen: () => {
+              document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+            }
+          });
+          location.reload();
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: result.error,
+            didOpen: () => {
+              document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+            }
+          });
+        }
+      }
+    });
+    
+    document.getElementById('update-address-btn').addEventListener('click', async () => {
+      const { value: formValues } = await Swal.fire({
+        title: 'Update Delivery Address',
+        html: `
+          <input id="swal-street" class="swal2-input" placeholder="Street Address">
+          <input id="swal-city" class="swal2-input" placeholder="City / State">
+          <input id="swal-postal" class="swal2-input" placeholder="Postal Code">
+        `,
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: 'Save Address',
+        preConfirm: () => {
+          return {
+            address: {
+              street: document.getElementById('swal-street').value,
+              city: document.getElementById('swal-city').value,
+              postal: document.getElementById('swal-postal').value
+            }
+          }
+        }
+      });
+      
+      if (formValues) {
+        const result = await updateUserProfile(user.uid, formValues);
+        if (result.success) {
+          Swal.fire('Success!', 'Address updated successfully', 'success');
+          location.reload();
+        } else {
+          Swal.fire('Error!', result.error, 'error');
+        }
+      }
+    });
+  </script>
+</body>
+</html>

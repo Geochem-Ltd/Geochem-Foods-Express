@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard — Geochem Foods Express</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    :root {
+      --gfe-green: #1B5E20;
+      --gfe-red: #D32F2F;
+      --gfe-gold: #D4AF37;
+      --gfe-bg: #FAF9F6;
+      --gfe-text: #222222;
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: var(--gfe-bg);
+      color: var(--gfe-text);
+      font-family: 'Inter', 'Poppins', 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    }
+    .sidebar-link {
+      transition: all 0.3s ease;
+    }
+    .sidebar-link:hover {
+      background-color: rgba(27, 94, 32, 0.1);
+      transform: translateX(4px);
+    }
+    .sidebar-link.active {
+      background-color: var(--gfe-green);
+      color: white;
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-white border-r border-gray-200 fixed h-full overflow-y-auto z-40 transition-transform duration-300 md:translate-x-0 -translate-x-full md:translate-x-0">
+      <div class="p-6">
+        <a href="index.html" class="flex items-center gap-2 mb-8">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" alt="GFE Logo" class="w-10 h-10 object-contain" />
+          <div>
+            <div class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</div>
+            <div class="font-semibold text-xs text-[var(--gfe-green)]">Admin Panel</div>
+          </div>
+        </a>
+
+        <!-- Admin Profile -->
+        <div class="mb-6 p-4 bg-gradient-to-r from-[var(--gfe-red)]/10 to-[var(--gfe-gold)]/10 rounded-lg">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-[var(--gfe-red)] text-white rounded-full flex items-center justify-center">
+              <i class="fas fa-user-shield text-xl"></i>
+            </div>
+            <div>
+              <div id="admin-name" class="font-semibold text-sm text-[var(--gfe-text)]">Admin</div>
+              <div class="text-xs text-gray-600">Administrator</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="space-y-2">
+          <a href="#dashboard" class="sidebar-link active flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium">
+            <i class="fas fa-tachometer-alt w-5"></i>
+            <span>Dashboard</span>
+          </a>
+          <a href="#products" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-box w-5"></i>
+            <span>Products</span>
+          </a>
+          <a href="#users" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-users w-5"></i>
+            <span>Users</span>
+          </a>
+          <a href="#orders" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-shopping-bag w-5"></i>
+            <span>Orders</span>
+          </a>
+          <a href="#analytics" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-chart-bar w-5"></i>
+            <span>Analytics</span>
+          </a>
+          <hr class="my-4" />
+          <a href="index.html" class="sidebar-link flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-text)]">
+            <i class="fas fa-home w-5"></i>
+            <span>Back to Site</span>
+          </a>
+          <button id="logout-btn" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium text-[var(--gfe-red)] hover:bg-red-50">
+            <i class="fas fa-sign-out-alt w-5"></i>
+            <span>Logout</span>
+          </button>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Add overlay for mobile sidebar -->
+    <div id="sidebar-overlay" class="hidden fixed inset-0 bg-black/50 z-30 md:hidden"></div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="flex-1 w-full md:ml-64 p-4 md:p-8 transition-all duration-300">
+      <!-- Mobile menu toggle button -->
+      <button id="menu-toggle" class="md:hidden mb-4 p-2 bg-white rounded-lg border border-gray-300 hover:bg-gray-50 transition">
+        <i class="fas fa-bars text-[var(--gfe-green)] text-lg"></i>
+      </button>
+
+      <!-- Header -->
+      <header class="mb-8">
+        <h1 class="text-3xl font-bold text-[var(--gfe-text)] mb-2">Admin Dashboard</h1>
+        <p class="text-gray-600">Manage products, users, and orders</p>
+      </header>
+
+      <!-- Stats Cards -->
+      <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white rounded-xl p-6 shadow-md">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-[var(--gfe-green)]/10 rounded-lg flex items-center justify-center">
+              <i class="fas fa-box text-[var(--gfe-green)] text-xl"></i>
+            </div>
+            <span class="text-xs text-gray-600">Total</span>
+          </div>
+          <div class="text-2xl font-bold text-[var(--gfe-text)]" id="total-products">0</div>
+          <div class="text-sm text-gray-600">Products</div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center">
+              <i class="fas fa-users text-blue-500 text-xl"></i>
+            </div>
+            <span class="text-xs text-gray-600">Total</span>
+          </div>
+          <div class="text-2xl font-bold text-[var(--gfe-text)]" id="total-users">0</div>
+          <div class="text-sm text-gray-600">Users</div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-[var(--gfe-gold)]/10 rounded-lg flex items-center justify-center">
+              <i class="fas fa-shopping-bag text-[var(--gfe-gold)] text-xl"></i>
+            </div>
+            <span class="text-xs text-gray-600">Total</span>
+          </div>
+          <div class="text-2xl font-bold text-[var(--gfe-text)]" id="total-orders">0</div>
+          <div class="text-sm text-gray-600">Orders</div>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-md">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-12 h-12 bg-[var(--gfe-red)]/10 rounded-lg flex items-center justify-center">
+              <i class="fas fa-naira-sign text-[var(--gfe-red)] text-xl"></i>
+            </div>
+            <span class="text-xs text-gray-600">Total</span>
+          </div>
+          <div class="text-2xl font-bold text-[var(--gfe-text)]" id="total-revenue">₦0</div>
+          <div class="text-sm text-gray-600">Revenue</div>
+        </div>
+      </section>
+
+      <!-- Products Management -->
+      <section class="bg-white rounded-xl p-6 shadow-md mb-8">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-bold text-[var(--gfe-text)]">Products Management</h2>
+          <button id="add-product-btn" class="px-4 py-2 bg-[var(--gfe-green)] text-white rounded-lg font-medium hover:bg-[#0d3a1a] transition">
+            <i class="fas fa-plus mr-2"></i>Add Product
+          </button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Product</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Category</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Price</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Stock</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-table">
+              <!-- Products will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Users Management -->
+      <section class="bg-white rounded-xl p-6 shadow-md">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-bold text-[var(--gfe-text)]">Users Management</h2>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Name</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Email</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Role</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Joined</th>
+                <th class="text-left py-3 px-4 text-sm font-semibold text-gray-700">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="users-table">
+              <!-- Users will be populated here -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module">
+    import { checkAuth, signOutUser, isAdmin } from './assets/js/auth-firebase.js';
+    import { db } from './assets/js/firebase-config.js';
+    import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, onSnapshot } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+    
+    // Check authentication and admin status
+    const user = await checkAuth();
+    if (!user) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Authentication Required',
+        text: 'Please login to access the admin dashboard',
+        confirmButtonText: 'Go to Login',
+        didOpen: () => {
+          document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+        }
+      }).then(() => {
+        window.location.href = 'login.html';
+      });
+    } else {
+      const adminStatus = await isAdmin(user.uid);
+      if (!adminStatus) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Access Denied',
+          text: 'You do not have admin privileges',
+          confirmButtonText: 'Go to Home',
+          didOpen: () => {
+            document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+          }
+        }).then(() => {
+          window.location.href = 'index.html';
+        });
+      } else {
+        document.getElementById('admin-name').textContent = user.displayName || user.email;
+      }
+    }
+    
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
+    const menuToggle = document.getElementById('menu-toggle');
+    
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+      overlay.classList.toggle('hidden');
+    });
+    
+    overlay.addEventListener('click', () => {
+      sidebar.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+    });
+    
+    // Close sidebar when clicking on a link
+    document.querySelectorAll('#sidebar a').forEach(link => {
+      link.addEventListener('click', () => {
+        sidebar.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      });
+    });
+    
+    // Logout functionality
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      const result = await Swal.fire({
+        title: 'Logout?',
+        text: 'Are you sure you want to logout?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, logout',
+        cancelButtonText: 'Cancel',
+        didOpen: () => {
+          document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+        }
+      });
+      
+      if (result.isConfirmed) {
+        await signOutUser();
+        window.location.href = 'index.html';
+      }
+    });
+    
+    // Load products from Firestore
+    const productsRef = collection(db, 'products');
+    onSnapshot(productsRef, (snapshot) => {
+      const productsTable = document.getElementById('products-table');
+      productsTable.innerHTML = '';
+      document.getElementById('total-products').textContent = snapshot.size;
+      
+      snapshot.forEach((doc) => {
+        const product = doc.data();
+        const row = document.createElement('tr');
+        row.className = 'border-b border-gray-100 hover:bg-gray-50';
+        row.innerHTML = `
+          <td class="py-3 px-4 text-sm">${product.name}</td>
+          <td class="py-3 px-4 text-sm">${product.category}</td>
+          <td class="py-3 px-4 text-sm font-semibold">₦${product.price.toLocaleString()}</td>
+          <td class="py-3 px-4 text-sm">${product.stock || 'N/A'}</td>
+          <td class="py-3 px-4 text-sm">
+            <button onclick="editProduct('${doc.id}')" class="text-blue-600 hover:text-blue-800 mr-3">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button onclick="deleteProduct('${doc.id}')" class="text-red-600 hover:text-red-800">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        `;
+        productsTable.appendChild(row);
+      });
+    });
+    
+    // Load users from Firestore
+    const usersRef = collection(db, 'users');
+    onSnapshot(usersRef, (snapshot) => {
+      const usersTable = document.getElementById('users-table');
+      usersTable.innerHTML = '';
+      document.getElementById('total-users').textContent = snapshot.size;
+      
+      snapshot.forEach((doc) => {
+        const userData = doc.data();
+        const row = document.createElement('tr');
+        row.className = 'border-b border-gray-100 hover:bg-gray-50';
+        row.innerHTML = `
+          <td class="py-3 px-4 text-sm">${userData.displayName || 'N/A'}</td>
+          <td class="py-3 px-4 text-sm">${userData.email}</td>
+          <td class="py-3 px-4 text-sm">
+            <span class="px-2 py-1 rounded-full text-xs ${userData.role === 'admin' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}">
+              ${userData.role || 'customer'}
+            </span>
+          </td>
+          <td class="py-3 px-4 text-sm">${new Date(userData.createdAt).toLocaleDateString()}</td>
+          <td class="py-3 px-4 text-sm">
+            <button onclick="editUser('${doc.id}')" class="text-blue-600 hover:text-blue-800 mr-3">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button onclick="deleteUser('${doc.id}')" class="text-red-600 hover:text-red-800">
+              <i class="fas fa-trash"></i>
+            </button>
+          </td>
+        `;
+        usersTable.appendChild(row);
+      });
+    });
+    
+    document.getElementById('add-product-btn').addEventListener('click', async () => {
+      const { value: formValues } = await Swal.fire({
+        title: 'Add New Product',
+        html: `
+          <input id="swal-name" class="swal2-input" placeholder="Product Name">
+          <input id="swal-category" class="swal2-input" placeholder="Category">
+          <input id="swal-price" type="number" class="swal2-input" placeholder="Price">
+          <input id="swal-stock" type="number" class="swal2-input" placeholder="Stock">
+          <input id="swal-image-url" class="swal2-input" placeholder="Product Image URL">
+          <textarea id="swal-description" class="swal2-textarea" placeholder="Description"></textarea>
+        `,
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: 'Add Product',
+        didOpen: () => {
+          document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+        },
+        preConfirm: () => {
+          return {
+            name: document.getElementById('swal-name').value,
+            category: document.getElementById('swal-category').value,
+            price: parseInt(document.getElementById('swal-price').value),
+            stock: parseInt(document.getElementById('swal-stock').value),
+            image: document.getElementById('swal-image-url').value,
+            description: document.getElementById('swal-description').value
+          }
+        }
+      });
+      
+      if (formValues) {
+        try {
+          await addDoc(productsRef, {
+            ...formValues,
+            createdAt: new Date().toISOString(),
+            rating: 0,
+            reviews: 0
+          });
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Product added successfully',
+            didOpen: () => {
+              document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+            }
+          });
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: error.message,
+            didOpen: () => {
+              document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+            }
+          });
+        }
+      }
+    });
+    
+    // Delete product function
+    window.deleteProduct = async function(productId) {
+      const result = await Swal.fire({
+        title: 'Delete Product?',
+        text: 'This action cannot be undone',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it',
+        confirmButtonColor: '#d33',
+        didOpen: () => {
+          document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+        }
+      });
+      
+      if (result.isConfirmed) {
+        try {
+          await deleteDoc(doc(db, 'products', productId));
+          Swal.fire({
+            icon: 'success',
+            title: 'Deleted!',
+            text: 'Product has been deleted',
+            didOpen: () => {
+              document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+            }
+          });
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: error.message,
+            didOpen: () => {
+              document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+            }
+          });
+        }
+      }
+    };
+    
+    // Edit product function
+    window.editProduct = async function(productId) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Info',
+        text: 'Edit functionality coming soon',
+        didOpen: () => {
+          document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+        }
+      });
+    };
+    
+    // Delete user function
+    window.deleteUser = async function(userId) {
+      const result = await Swal.fire({
+        title: 'Delete User?',
+        text: 'This action cannot be undone',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it',
+        confirmButtonColor: '#d33',
+        didOpen: () => {
+          document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+        }
+      });
+      
+      if (result.isConfirmed) {
+        try {
+          await deleteDoc(doc(db, 'users', userId));
+          Swal.fire({
+            icon: 'success',
+            title: 'Deleted!',
+            text: 'User has been deleted',
+            didOpen: () => {
+              document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+            }
+          });
+        } catch (error) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: error.message,
+            didOpen: () => {
+              document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+            }
+          });
+        }
+      }
+    };
+    
+    // Edit user function
+    window.editUser = async function(userId) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Info',
+        text: 'Edit functionality coming soon',
+        didOpen: () => {
+          document.querySelector('.swal2-popup').style.maxWidth = '90vw';
+        }
+      });
+    };
+  </script>
+</body>
+</html>
