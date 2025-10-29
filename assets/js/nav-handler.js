@@ -73,16 +73,27 @@ export function initDashboardNav() {
 
 export function updateAuthNav() {
   const userLoggedIn = localStorage.getItem("gfeUser")
+  
+  // Desktop navigation
   const publicNav = document.querySelector("#public-nav")
   const privateNav = document.querySelector("#private-nav")
   const authButtons = document.querySelector("#auth-buttons")
   const userMenu = document.querySelector("#user-menu")
+  
+  // Mobile navigation
+  const mobilePublicNav = document.querySelector("#mobile-public-nav")
+  const mobilePrivateNav = document.querySelector("#mobile-private-nav")
 
   if (userLoggedIn) {
+    // Desktop
     if (publicNav) publicNav.style.display = "none"
     if (privateNav) privateNav.style.display = "flex"
     if (authButtons) authButtons.style.display = "none"
     if (userMenu) userMenu.style.display = "flex"
+    
+    // Mobile
+    if (mobilePublicNav) mobilePublicNav.style.display = "none"
+    if (mobilePrivateNav) mobilePrivateNav.style.display = "flex"
 
     try {
       const userData = JSON.parse(userLoggedIn)
@@ -94,22 +105,35 @@ export function updateAuthNav() {
       console.error("Error parsing user data:", e)
     }
   } else {
+    // Desktop
     if (publicNav) publicNav.style.display = "flex"
     if (privateNav) privateNav.style.display = "none"
     if (authButtons) authButtons.style.display = "flex"
     if (userMenu) userMenu.style.display = "none"
+    
+    // Mobile
+    if (mobilePublicNav) mobilePublicNav.style.display = "flex"
+    if (mobilePrivateNav) mobilePrivateNav.style.display = "none"
   }
 }
 
 export function setupLogoutButton() {
   const logoutBtn = document.getElementById("logout-btn")
+  const mobileLogoutBtn = document.getElementById("mobile-logout-btn")
+  
+  const handleLogout = (e) => {
+    e.preventDefault()
+    if (confirm("Are you sure you want to log out?")) {
+      localStorage.removeItem("gfeUser")
+      window.location.href = "index.html"
+    }
+  }
+  
   if (logoutBtn) {
-    logoutBtn.addEventListener("click", (e) => {
-      e.preventDefault()
-      if (confirm("Are you sure you want to log out?")) {
-        localStorage.removeItem("gfeUser")
-        window.location.href = "index.html"
-      }
-    })
+    logoutBtn.addEventListener("click", handleLogout)
+  }
+  
+  if (mobileLogoutBtn) {
+    mobileLogoutBtn.addEventListener("click", handleLogout)
   }
 }

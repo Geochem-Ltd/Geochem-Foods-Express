@@ -181,8 +181,8 @@
         </div>
       </a>
 
-      <!-- Navigation (Desktop - Public) -->
-      <nav id="public-nav" class="hidden lg:flex items-center gap-6">
+      <!-- Desktop Navigation (Public) -->
+      <nav id="public-nav" class="hidden md:flex items-center gap-6">
         <a href="index.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Home</a>
         <a href="shop.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Shop</a>
         <a href="about.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">About</a>
@@ -191,8 +191,8 @@
         <a href="contact.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Contact</a>
       </nav>
 
-      <!-- Navigation (Desktop - Authenticated) -->
-      <nav id="private-nav" class="hidden lg:flex items-center gap-6" style="display: none;">
+      <!-- Desktop Navigation (Authenticated) -->
+      <nav id="private-nav" class="hidden md:flex items-center gap-6" style="display: none;">
         <a href="marketplace.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Marketplace</a>
         <a href="profile.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Profile</a>
         <a href="analytics.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Analytics</a>
@@ -200,36 +200,35 @@
         <a href="cart.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Cart</a>
       </nav>
 
-      <!-- CTA Buttons - only show hamburger on mobile -->
-      <div id="auth-buttons" class="flex items-center gap-2">
-        <button onclick="checkAuthAndRedirect('marketplace.html')" class="hidden md:inline-block px-4 py-2 rounded-full bg-[var(--gfe-gold)] text-[var(--gfe-green)] text-sm font-medium btn-primary shadow-md hover:bg-[var(--gfe-green)] hover:text-white">
+      <!-- Desktop CTA Buttons (Public) -->
+      <div id="auth-buttons" class="hidden md:flex items-center gap-2">
+        <button onclick="checkAuthAndRedirect('marketplace.html')" class="px-4 py-2 rounded-full bg-[var(--gfe-gold)] text-[var(--gfe-green)] text-sm font-medium btn-primary shadow-md hover:bg-[var(--gfe-green)] hover:text-white">
           <i class="fa fa-store mr-1"></i>Marketplace
         </button>
-        <a href="login.html" class="hidden md:inline-block px-4 py-2 rounded-full bg-[var(--gfe-green)] text-white text-sm font-medium btn-primary shadow-md">
+        <a href="login.html" class="px-4 py-2 rounded-full bg-[var(--gfe-green)] text-white text-sm font-medium btn-primary shadow-md">
           Sign In
         </a>
-        <button id="openMenu" aria-label="Open navigation menu" class="p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
-          <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
-        </button>
       </div>
 
-      <!-- User Menu (Authenticated) -->
-      <div id="user-menu" class="flex items-center gap-3" style="display: none;">
-        <div class="hidden md:flex items-center gap-2 px-3 py-2 bg-white rounded-full border border-gray-200">
+      <!-- Desktop User Menu (Authenticated) -->
+      <div id="user-menu" class="hidden md:flex items-center gap-3" style="display: none;">
+        <div class="flex items-center gap-2 px-3 py-2 bg-white rounded-full border border-gray-200">
           <i class="fa fa-user-circle text-[var(--gfe-green)] text-lg"></i>
           <span id="user-name" class="text-sm font-medium text-[var(--gfe-text)]">User</span>
         </div>
-        <button id="logout-btn" class="hidden md:inline-block px-4 py-2 rounded-full bg-[var(--gfe-red)] text-white text-sm font-medium hover:bg-red-700 transition shadow-md">
+        <button id="logout-btn" class="px-4 py-2 rounded-full bg-[var(--gfe-red)] text-white text-sm font-medium hover:bg-red-700 transition shadow-md">
           <i class="fa fa-sign-out-alt mr-1"></i>Logout
         </button>
-        <button id="openMenu" aria-label="Open navigation menu" class="p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
-          <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
-        </button>
       </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button id="openMenu" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
+        <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
+      </button>
     </div>
   </header>
 
-  <!-- Mobile menu with overlay backdrop -->
+  <!-- Mobile Sidebar Menu -->
   <div id="mobileMenu" class="hidden fixed inset-0 bg-black/50 z-50 md:hidden">
     <div class="bg-white w-4/5 max-w-sm h-full ml-auto p-6 shadow-2xl overflow-y-auto">
       <div class="flex items-center justify-between mb-8">
@@ -245,8 +244,8 @@
         </button>
       </div>
       
-      <!-- Mobile Navigation Links -->
-      <nav class="flex flex-col gap-4">
+      <!-- Mobile Navigation Links (Public) -->
+      <nav id="mobile-public-nav" class="flex flex-col gap-4">
         <a href="index.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
           <i class="fa fa-home mr-2"></i>Home
         </a>
@@ -271,6 +270,29 @@
         </a>
         <button onclick="checkAuthAndRedirect('marketplace.html')" class="text-left text-base font-medium text-[var(--gfe-green)] hover:text-[var(--gfe-green)] transition py-2">
           <i class="fa fa-store mr-2"></i>Marketplace
+        </button>
+      </nav>
+
+      <!-- Mobile Navigation Links (Authenticated) -->
+      <nav id="mobile-private-nav" class="flex flex-col gap-4" style="display: none;">
+        <a href="marketplace.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-store mr-2"></i>Marketplace
+        </a>
+        <a href="profile.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-user mr-2"></i>Profile
+        </a>
+        <a href="analytics.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-chart-line mr-2"></i>Analytics
+        </a>
+        <a href="settings.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-cog mr-2"></i>Settings
+        </a>
+        <a href="cart.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fa fa-shopping-cart mr-2"></i>Cart
+        </a>
+        <hr class="my-2" />
+        <button id="mobile-logout-btn" class="text-left text-base font-medium text-[var(--gfe-red)] hover:text-red-700 transition py-2">
+          <i class="fa fa-sign-out-alt mr-2"></i>Logout
         </button>
       </nav>
     </div>
