@@ -140,18 +140,30 @@
         </div>
       </a>
 
-      <!-- CTA Buttons (Public) -->
-      <div id="auth-buttons" class="flex items-center gap-2">
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Home</a>
+        <a href="shop.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Shop</a>
+        <a href="about.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">About</a>
+        <a href="why-us.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Why Us</a>
+        <a href="blog.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Blog</a>
+        <a href="contact.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Contact</a>
+      </nav>
+
+      <!-- Desktop CTA Buttons -->
+      <div class="hidden md:flex items-center gap-2">
         <button onclick="checkAuthAndRedirect('marketplace.html')" class="px-4 py-2 rounded-full bg-[var(--gfe-gold)] text-[var(--gfe-green)] text-sm font-medium btn-primary shadow-md hover:bg-[var(--gfe-green)] hover:text-white">
           <i class="fa fa-store mr-1"></i>Marketplace
         </button>
         <a href="login.html" class="px-4 py-2 rounded-full bg-[var(--gfe-green)] text-white text-sm font-medium btn-primary shadow-md">
           Sign In
         </a>
-        <button id="openMenu" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
-          <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
-        </button>
       </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button id="openMenu" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
+        <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
+      </button>
 
       
     </div>
