@@ -122,7 +122,8 @@
 
     .header-sticky {
       backdrop-filter: blur(10px);
-      background: rgba(250, 249, 246, 0.8);
+      background: rgba(250, 249, 246, 0.95);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .skip-link {
@@ -225,7 +226,7 @@
           </a>
         </div>
         <div class="h-64 md:h-full bg-gradient-to-br from-[var(--gfe-green)]/10 to-[var(--gfe-gold)]/10 rounded-xl flex items-center justify-center overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=600&h=400&fit=crop" alt="Food Hygiene Lab" class="w-full h-full object-cover">
+          <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=600&h=400&fit=crop" alt="Food Hygiene Lab Testing" class="w-full h-full object-cover">
         </div>
       </div>
     </section>
@@ -257,7 +258,7 @@
         <!-- Article 2 -->
         <div class="bg-white rounded-2xl overflow-hidden shadow-md blog-card card-hover animate-scale-in delay-100">
           <div class="h-40 bg-gradient-to-br from-[var(--gfe-red)]/10 to-[var(--gfe-gold)]/10 flex items-center justify-center overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1633945274452-c32c2e674e0f?w=400&h=300&fit=crop" alt="Jollof Rice" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?w=400&h=300&fit=crop" alt="Jollof Rice Nigerian Cuisine" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
             <div class="category-badge">Recipes</div>
@@ -297,7 +298,7 @@
         <!-- Article 4 -->
         <div class="bg-white rounded-2xl overflow-hidden shadow-md blog-card card-hover animate-scale-in">
           <div class="h-40 bg-gradient-to-br from-[var(--gfe-green)]/10 to-[var(--gfe-red)]/10 flex items-center justify-center overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1603046891726-36bfd957f00b?w=400&h=300&fit=crop" alt="Food Labels" class="w-full h-full object-cover">
+            <img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=400&h=300&fit=crop" alt="Food Labels Reading Guide" class="w-full h-full object-cover">
           </div>
           <div class="p-6">
             <div class="category-badge">Education</div>
@@ -442,6 +443,45 @@
       </div>
     </div>
   </footer>
+
+  <!-- Mobile Sidebar Menu -->
+  <div id="mobileMenu" class="hidden fixed inset-0 bg-black/50 z-50 md:hidden">
+    <div class="bg-white w-4/5 max-w-sm h-full ml-auto p-6 shadow-2xl overflow-y-auto">
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-2">
+          <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cooU6mMI1RFeCvJAXMg1wACaOoRpCt.png" alt="GFE Logo" class="w-10 h-10 object-contain" width="40" height="40" />
+          <div>
+            <div class="font-bold text-sm text-[var(--gfe-red)]">GEOCHEM</div>
+            <div class="font-semibold text-xs text-[var(--gfe-green)]">Foods Express</div>
+          </div>
+        </div>
+        <button id="closeMenu" aria-label="Close menu" class="p-2 hover:bg-gray-100 rounded-lg transition">
+          <i class="fas fa-times text-[var(--gfe-text)] text-xl"></i>
+        </button>
+      </div>
+      
+      <nav class="flex flex-col gap-4">
+        <a href="index.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-home mr-2"></i>Home
+        </a>
+        <a href="shop.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-shopping-bag mr-2"></i>Shop
+        </a>
+        <a href="about.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-info-circle mr-2"></i>About
+        </a>
+        <a href="why-us.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-star mr-2"></i>Why Us
+        </a>
+        <a href="blog.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-blog mr-2"></i>Blog
+        </a>
+        <a href="contact.html" class="text-base font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition py-2">
+          <i class="fas fa-envelope mr-2"></i>Contact
+        </a>
+      </nav>
+    </div>
+  </div>
 
   <script>
     // Mobile Menu Handler
