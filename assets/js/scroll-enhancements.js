@@ -1,7 +1,7 @@
 // Enhanced Scroll Behavior for Geochem Foods Express
 // Smooth scroll with easing, scroll-to-top button, and intersection observer animations
 
-export function initSmoothScroll() {
+function initSmoothScroll() {
   // Handle all anchor link clicks for smooth scrolling
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -21,7 +21,7 @@ export function initSmoothScroll() {
   })
 }
 
-export function initScrollToTop() {
+function initScrollToTop() {
   // Create scroll-to-top button
   const scrollBtn = document.createElement('button')
   scrollBtn.id = 'scroll-to-top'
@@ -74,7 +74,7 @@ export function initScrollToTop() {
   })
 }
 
-export function initScrollAnimations() {
+function initScrollAnimations() {
   // Intersection Observer for scroll animations
   const observerOptions = {
     root: null,
@@ -98,7 +98,7 @@ export function initScrollAnimations() {
 }
 
 // Initialize all scroll enhancements
-export function initAllScrollEnhancements() {
+function initAllScrollEnhancements() {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initSmoothScroll()

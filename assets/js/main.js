@@ -1,14 +1,11 @@
 // Main JavaScript for Geochem Foods Express
 // Handles navigation switching, mobile menu, and shared functionality
 
-import { initPublicNav, updateAuthNav, setupLogoutButton } from './nav-handler.js'
-import { initAllScrollEnhancements } from './scroll-enhancements.js'
-
 document.addEventListener("DOMContentLoaded", () => {
-  updateAuthNav()
-  initPublicNav()
-  setupLogoutButton()
-  initAllScrollEnhancements()
+  if (typeof updateAuthNav === 'function') updateAuthNav()
+  if (typeof initPublicNav === 'function') initPublicNav()
+  if (typeof setupLogoutButton === 'function') setupLogoutButton()
+  if (typeof initAllScrollEnhancements === 'function') initAllScrollEnhancements()
 })
 
 // 3D Tilt effect for cards

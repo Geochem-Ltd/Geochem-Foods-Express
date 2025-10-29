@@ -1,7 +1,7 @@
 // Shared Navigation Handler for Geochem Foods Express
 // Handles both public navigation and dashboard sidebar navigation
 
-export function initPublicNav() {
+function initPublicNav() {
   const openMenuBtn = document.getElementById("openMenu")
   const closeMenuBtn = document.getElementById("closeMenu")
   const mobileMenu = document.getElementById("mobileMenu")
@@ -33,7 +33,7 @@ export function initPublicNav() {
   }
 }
 
-export function initDashboardNav() {
+function initDashboardNav() {
   const menuToggle = document.getElementById("menu-toggle")
   const sidebar = document.getElementById("sidebar")
   const sidebarOverlay = document.getElementById("sidebar-overlay")
@@ -71,15 +71,15 @@ export function initDashboardNav() {
   })
 }
 
-export function updateAuthNav() {
+function updateAuthNav() {
   const userLoggedIn = localStorage.getItem("gfeUser")
-  
+
   // Desktop navigation
   const publicNav = document.querySelector("#public-nav")
   const privateNav = document.querySelector("#private-nav")
   const authButtons = document.querySelector("#auth-buttons")
   const userMenu = document.querySelector("#user-menu")
-  
+
   // Mobile navigation
   const mobilePublicNav = document.querySelector("#mobile-public-nav")
   const mobilePrivateNav = document.querySelector("#mobile-private-nav")
@@ -90,7 +90,7 @@ export function updateAuthNav() {
     if (privateNav) privateNav.style.display = "flex"
     if (authButtons) authButtons.style.display = "none"
     if (userMenu) userMenu.style.display = "flex"
-    
+
     // Mobile
     if (mobilePublicNav) mobilePublicNav.style.display = "none"
     if (mobilePrivateNav) mobilePrivateNav.style.display = "flex"
@@ -110,17 +110,17 @@ export function updateAuthNav() {
     if (privateNav) privateNav.style.display = "none"
     if (authButtons) authButtons.style.display = "flex"
     if (userMenu) userMenu.style.display = "none"
-    
+
     // Mobile
     if (mobilePublicNav) mobilePublicNav.style.display = "flex"
     if (mobilePrivateNav) mobilePrivateNav.style.display = "none"
   }
 }
 
-export function setupLogoutButton() {
+function setupLogoutButton() {
   const logoutBtn = document.getElementById("logout-btn")
   const mobileLogoutBtn = document.getElementById("mobile-logout-btn")
-  
+
   const handleLogout = (e) => {
     e.preventDefault()
     if (confirm("Are you sure you want to log out?")) {
@@ -128,11 +128,11 @@ export function setupLogoutButton() {
       window.location.href = "index.html"
     }
   }
-  
+
   if (logoutBtn) {
     logoutBtn.addEventListener("click", handleLogout)
   }
-  
+
   if (mobileLogoutBtn) {
     mobileLogoutBtn.addEventListener("click", handleLogout)
   }
