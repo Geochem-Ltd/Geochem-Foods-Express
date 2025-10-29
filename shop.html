@@ -140,25 +140,6 @@
         </div>
       </a>
 
-      <!-- Navigation (Desktop - Public) -->
-      <nav id="public-nav" class="hidden md:flex items-center gap-6">
-        <a href="index.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Home</a>
-        <a href="shop.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Shop</a>
-        <a href="about.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">About</a>
-        <a href="why-us.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Why Us</a>
-        <a href="blog.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Blog</a>
-        <a href="contact.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Contact</a>
-      </nav>
-
-      <!-- Navigation (Desktop - Authenticated) -->
-      <nav id="private-nav" class="hidden md:flex items-center gap-6" style="display: none;">
-        <a href="marketplace.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Marketplace</a>
-        <a href="profile.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Profile</a>
-        <a href="analytics.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Analytics</a>
-        <a href="settings.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Settings</a>
-        <a href="checkout.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Checkout</a>
-      </nav>
-
       <!-- CTA Buttons (Public) -->
       <div id="auth-buttons" class="flex items-center gap-2">
         <button onclick="checkAuthAndRedirect('marketplace.html')" class="px-4 py-2 rounded-full bg-[var(--gfe-gold)] text-[var(--gfe-green)] text-sm font-medium btn-primary shadow-md hover:bg-[var(--gfe-green)] hover:text-white">
@@ -172,19 +153,7 @@
         </button>
       </div>
 
-      <!-- User Menu (Authenticated) -->
-      <div id="user-menu" class="flex items-center gap-3" style="display: none;">
-        <div class="hidden md:flex items-center gap-2 px-3 py-2 bg-white rounded-full border border-gray-200">
-          <i class="fa fa-user-circle text-[var(--gfe-green)] text-lg"></i>
-          <span id="user-name" class="text-sm font-medium text-[var(--gfe-text)]">User</span>
-        </div>
-        <button id="logout-btn" class="px-4 py-2 rounded-full bg-[var(--gfe-red)] text-white text-sm font-medium hover:bg-red-700 transition shadow-md">
-          <i class="fa fa-sign-out-alt mr-1"></i>Logout
-        </button>
-        <button id="openMenu" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
-          <i class="fa fa-bars text-[var(--gfe-green)] text-lg"></i>
-        </button>
-      </div>
+      
     </div>
   </header>
 

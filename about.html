@@ -106,43 +106,8 @@
         </div>
       </a>
 
-      <!-- Public Navigation (shown when NOT logged in) -->
-      <nav id="publicNav" class="hidden md:flex items-center gap-6">
-        <a href="index.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Home</a>
-        <a href="shop.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Shop</a>
-        <a href="about.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">About</a>
-        <a href="why-us.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Why Us</a>
-        <a href="blog.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Blog</a>
-        <a href="contact.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Contact</a>
-      </nav>
-
-      <!-- Authenticated Navigation (shown when logged in) -->
-      <nav id="authNav" class="hidden md:flex items-center gap-6" style="display: none;">
-        <a href="marketplace.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Marketplace</a>
-        <a href="profile.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Profile</a>
-        <a href="analytics.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Analytics</a>
-        <a href="settings.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Settings</a>
-        <a href="checkout.html" class="text-sm font-medium text-[var(--gfe-text)] hover:text-[var(--gfe-green)] transition">Checkout</a>
-      </nav>
-
       <div class="flex items-center gap-2">
-        <div id="publicButtons" class="flex items-center gap-2">
-          <a href="marketplace.html" class="px-4 py-2 rounded-full bg-[var(--gfe-gold)] text-[var(--gfe-green)] text-sm font-medium btn-primary shadow-md hover:bg-[var(--gfe-green)] hover:text-white">
-            <i class="fas fa-store mr-1"></i>Marketplace
-          </a>
-          <a href="login.html" class="px-4 py-2 rounded-full bg-[var(--gfe-green)] text-white text-sm font-medium btn-primary shadow-md">
-            Sign In
-          </a>
-        </div>
-        <div id="authButtons" class="flex items-center gap-2" style="display: none;">
-          <a href="profile.html" class="w-10 h-10 rounded-full bg-[var(--gfe-green)] text-white flex items-center justify-center hover:bg-[#0d3a1a] transition" title="Profile">
-            <i class="fas fa-user"></i>
-          </a>
-          <button id="logoutBtn" class="px-4 py-2 rounded-full bg-[var(--gfe-red)] text-white text-sm font-medium hover:bg-[#a52727] transition">
-            <i class="fas fa-sign-out-alt mr-1"></i>Logout
-          </button>
-        </div>
-        <button id="openMenu" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
+        <button id="openMenu" aria-label="Open navigation menu" class="p-2 rounded-lg bg-white border border-gray-300 hover:bg-gray-50 transition">
           <i class="fas fa-bars text-[var(--gfe-green)] text-lg"></i>
         </button>
       </div>
